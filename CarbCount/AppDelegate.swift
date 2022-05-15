@@ -9,7 +9,14 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    var window: UIWindow? = nil
+    var mainNavigationController: UINavigationController? {
+        let tabController =  self.window?.rootViewController as? UITabBarController
+        return tabController?.selectedViewController as? UINavigationController
+    }
+    var tabController: UITabBarController? {
+        return self.window?.rootViewController as? UITabBarController
+    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
