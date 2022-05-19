@@ -13,7 +13,7 @@
             <objects>
                 <navigationController storyboardIdentifier="MainNavigationController" id="sSp-sc-1fX" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="kUH-ht-KLM"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YkA-pI-589">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="YkA-pI-589">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -30,7 +30,7 @@
             <objects>
                 <navigationController id="4bE-uL-RJy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="2yu-ah-P9e"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dsp-PX-Pf4">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="dsp-PX-Pf4">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -67,7 +67,7 @@
             <objects>
                 <viewController id="Ndh-8U-DdG" customClass="ViewController" customModule="CarbCount" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="een-Tq-lfn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="692-7y-g0h"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -88,7 +88,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AVk-YF-Ccl">
-                                <rect key="frame" x="16" y="128" width="382" height="50"/>
+                                <rect key="frame" x="12" y="128" width="390" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="sAb-Op-tIN"/>
                                 </constraints>
@@ -96,7 +96,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SWs-h7-eT8">
-                                <rect key="frame" x="16" y="190" width="382" height="50"/>
+                                <rect key="frame" x="12" y="190" width="390" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="bSM-ng-cbs"/>
                                 </constraints>
@@ -114,29 +114,75 @@
                                     <action selector="calculateCarbCount:" destination="LL4-RO-Tom" eventType="touchUpInside" id="ODv-rf-Oiu"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qch-bt-TbX">
+                                <rect key="frame" x="12" y="252" width="189" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="n0G-7N-sc1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JDm-ly-07N">
+                                <rect key="frame" x="213" y="252" width="189" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="189" id="bQI-M1-6Ei"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fYH-cg-XCa">
+                                <rect key="frame" x="12" y="314" width="189" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yC7-wq-Hg8">
+                                <rect key="frame" x="213" y="314" width="189" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="zMa-Pa-nN3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JzZ-Tf-0ze"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="JzZ-Tf-0ze" firstAttribute="trailing" secondItem="hJc-u3-Hzb" secondAttribute="trailing" constant="40" id="0mW-wf-J32"/>
+                            <constraint firstItem="fYH-cg-XCa" firstAttribute="trailing" secondItem="qch-bt-TbX" secondAttribute="trailing" id="2iL-cQ-nQt"/>
+                            <constraint firstItem="yC7-wq-Hg8" firstAttribute="top" secondItem="JDm-ly-07N" secondAttribute="bottom" constant="12" id="5WQ-eI-H5s"/>
+                            <constraint firstItem="fYH-cg-XCa" firstAttribute="leading" secondItem="qch-bt-TbX" secondAttribute="leading" id="8C6-N2-Y2v"/>
                             <constraint firstItem="hJc-u3-Hzb" firstAttribute="centerY" secondItem="td3-Ho-zyo" secondAttribute="centerY" id="9Cm-lH-9QI"/>
-                            <constraint firstItem="AVk-YF-Ccl" firstAttribute="leading" secondItem="JzZ-Tf-0ze" secondAttribute="leading" constant="16" id="A89-0X-dJF"/>
+                            <constraint firstAttribute="trailing" secondItem="SWs-h7-eT8" secondAttribute="trailing" constant="12" id="BoK-m7-TwT"/>
                             <constraint firstItem="hJc-u3-Hzb" firstAttribute="centerX" secondItem="td3-Ho-zyo" secondAttribute="centerX" id="DCT-2v-GjV"/>
-                            <constraint firstItem="JzZ-Tf-0ze" firstAttribute="trailing" secondItem="AVk-YF-Ccl" secondAttribute="trailing" constant="16" id="Ev9-Ly-Wb4"/>
                             <constraint firstItem="hJc-u3-Hzb" firstAttribute="leading" secondItem="JzZ-Tf-0ze" secondAttribute="leading" constant="40" id="GKS-uy-yLU"/>
-                            <constraint firstItem="SWs-h7-eT8" firstAttribute="leading" secondItem="AVk-YF-Ccl" secondAttribute="leading" id="Mws-3b-2Kn"/>
                             <constraint firstItem="SWs-h7-eT8" firstAttribute="top" secondItem="AVk-YF-Ccl" secondAttribute="bottom" constant="12" id="Phs-8w-j65"/>
-                            <constraint firstItem="SWs-h7-eT8" firstAttribute="trailing" secondItem="AVk-YF-Ccl" secondAttribute="trailing" id="XhM-5d-Dkr"/>
+                            <constraint firstItem="qch-bt-TbX" firstAttribute="top" secondItem="JDm-ly-07N" secondAttribute="top" id="Pj4-hl-bdb"/>
                             <constraint firstItem="AVk-YF-Ccl" firstAttribute="top" secondItem="JzZ-Tf-0ze" secondAttribute="top" constant="40" id="Xug-YT-cnP"/>
+                            <constraint firstItem="JDm-ly-07N" firstAttribute="trailing" secondItem="SWs-h7-eT8" secondAttribute="trailing" id="c7S-NP-t3T"/>
+                            <constraint firstAttribute="trailing" secondItem="AVk-YF-Ccl" secondAttribute="trailing" constant="12" id="cp9-rM-3vJ"/>
+                            <constraint firstItem="qch-bt-TbX" firstAttribute="bottom" secondItem="JDm-ly-07N" secondAttribute="bottom" id="fA4-xi-NoB"/>
+                            <constraint firstItem="yC7-wq-Hg8" firstAttribute="leading" secondItem="JDm-ly-07N" secondAttribute="leading" id="fIn-dT-Itg"/>
+                            <constraint firstItem="qch-bt-TbX" firstAttribute="leading" secondItem="SWs-h7-eT8" secondAttribute="leading" id="fKj-p9-gaf"/>
+                            <constraint firstItem="SWs-h7-eT8" firstAttribute="leading" secondItem="td3-Ho-zyo" secondAttribute="leading" constant="12" id="miR-dI-myq"/>
+                            <constraint firstItem="yC7-wq-Hg8" firstAttribute="bottom" secondItem="fYH-cg-XCa" secondAttribute="bottom" id="qKq-xv-z49"/>
+                            <constraint firstItem="JDm-ly-07N" firstAttribute="leading" secondItem="qch-bt-TbX" secondAttribute="trailing" constant="12" id="qLZ-kx-lN0"/>
+                            <constraint firstItem="yC7-wq-Hg8" firstAttribute="trailing" secondItem="JDm-ly-07N" secondAttribute="trailing" id="rpA-Xu-GYn"/>
+                            <constraint firstItem="AVk-YF-Ccl" firstAttribute="leading" secondItem="td3-Ho-zyo" secondAttribute="leading" constant="12" id="uvO-fy-k3s"/>
+                            <constraint firstItem="qch-bt-TbX" firstAttribute="top" secondItem="SWs-h7-eT8" secondAttribute="bottom" constant="12" id="v4l-SW-PAn"/>
+                            <constraint firstItem="yC7-wq-Hg8" firstAttribute="top" secondItem="fYH-cg-XCa" secondAttribute="top" id="vFI-YS-GbX"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profil" image="profile-tab" id="ngN-yc-6wy"/>
                     <navigationItem key="navigationItem" title="Profil" id="T1S-cX-a88"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="ageTextField" destination="JDm-ly-07N" id="TaL-Ua-aqy"/>
+                        <outlet property="birthDateTextField" destination="qch-bt-TbX" id="IAp-EV-RDj"/>
                         <outlet property="countButton" destination="hJc-u3-Hzb" id="7WC-p3-KRE"/>
+                        <outlet property="heightTextField" destination="yC7-wq-Hg8" id="ffp-iC-Otb"/>
                         <outlet property="nameTextField" destination="AVk-YF-Ccl" id="CJa-0E-Pi9"/>
-                        <outlet property="surnameTextField" destination="SWs-h7-eT8" id="bVX-uO-Lh2"/>
+                        <outlet property="surnameTextField" destination="SWs-h7-eT8" id="QHs-Dc-i4y"/>
+                        <outlet property="weightTextField" destination="fYH-cg-XCa" id="DDm-HG-NFt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xo3-o3-Slu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -148,7 +194,7 @@
             <objects>
                 <viewController id="iM5-p3-sgF" customClass="FoodsViewController" customModule="CarbCount" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ylq-m6-UCg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="2l2-1d-ZUj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -165,7 +211,7 @@
             <objects>
                 <navigationController id="vI0-rS-3yu" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="z86-jc-ynO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aTk-Di-yGy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="aTk-Di-yGy">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

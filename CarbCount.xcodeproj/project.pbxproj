@@ -18,6 +18,8 @@
 		DC5D4E92282D5B60001E03D2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5D4E91282D5B60001E03D2 /* ProfileViewController.swift */; };
 		DC5D4E94282D5BB3001E03D2 /* FoodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5D4E93282D5BB3001E03D2 /* FoodsViewController.swift */; };
 		DC5D4E9B282E677B001E03D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC5D4E9A282E677B001E03D2 /* Main.storyboard */; };
+		DCA08143283646DA005A4760 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA08142283646DA005A4760 /* ProfileViewModel.swift */; };
+		DCA0814728364726005A4760 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA0814628364726005A4760 /* DateExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		DC5D4E91282D5B60001E03D2 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DC5D4E93282D5BB3001E03D2 /* FoodsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodsViewController.swift; sourceTree = "<group>"; };
 		DC5D4E9A282E677B001E03D2 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		DCA08142283646DA005A4760 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		DCA0814628364726005A4760 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 		DC5D4E54282D3384001E03D2 /* CarbCount */ = {
 			isa = PBXGroup;
 			children = (
+				DCA081442836470F005A4760 /* Extensions */,
+				DCA08141283646C4005A4760 /* ViewModels */,
 				DC5D4E9E282E6AF8001E03D2 /* ViewControllers */,
 				DC5D4E9C282E6AE3001E03D2 /* Storyboards */,
 				DC5D4E55282D3384001E03D2 /* AppDelegate.swift */,
@@ -147,6 +153,22 @@
 				DC5D4E93282D5BB3001E03D2 /* FoodsViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		DCA08141283646C4005A4760 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				DCA08142283646DA005A4760 /* ProfileViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		DCA081442836470F005A4760 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DCA0814628364726005A4760 /* DateExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +302,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCA0814728364726005A4760 /* DateExtensions.swift in Sources */,
+				DCA08143283646DA005A4760 /* ProfileViewModel.swift in Sources */,
 				DC5D4E5A282D3384001E03D2 /* ViewController.swift in Sources */,
 				DC5D4E94282D5BB3001E03D2 /* FoodsViewController.swift in Sources */,
 				DC5D4E56282D3384001E03D2 /* AppDelegate.swift in Sources */,
