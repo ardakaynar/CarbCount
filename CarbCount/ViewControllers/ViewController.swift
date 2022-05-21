@@ -9,10 +9,24 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var greetingLabel: UILabel!
+    @IBOutlet weak var circularView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        let cp = CircularProgressView(frame: CGRect(x: 10.0, y: 10.0, width: 350.0, height: 350.0))
+        cp.trackColor = UIColor.green
+        cp.progressColor = UIColor.orange
+        self.circularView.addSubview(cp)
+        cp.progressLayer.strokeEnd = 1.0
         
+     
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        DispatchQueue.main.async(execute: {
+            self.greetingLabel.text = "Merhaba \(Store.shared.name) !\(Store.shared.dailyCarbCount)"
+        })
     }
     
     func setupUI() {

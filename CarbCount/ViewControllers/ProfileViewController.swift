@@ -25,7 +25,7 @@ class ProfileViewController: UIViewController {
     let viewModel = ProfileViewModel()
     let datePicker = UIDatePicker()
 
-// MARK: - Actions
+// MARK: - Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,14 +58,14 @@ class ProfileViewController: UIViewController {
         formatter.locale = Locale(identifier: "tr")
         formatter.dateFormat = "dd.MM.yyyy"
         birthDateTextField.text = formatter.string(from: datePicker.date)
-        let age = calculateAge(dateOfBirth: datePicker.date)
-        ageTextField.text = "\(Int(age)) yaşında"
+        Store.shared.age = calculateAge(dateOfBirth: datePicker.date)
+        ageTextField.text = "\(Store.shared.age) yaşında"
         self.view.endEditing(true)
     }
     
-    func calculateAge(dateOfBirth: Date) -> Double {
+    func calculateAge(dateOfBirth: Date) -> Int {
         let ageComponents: DateComponents = Calendar.current.dateComponents([.year], from: dateOfBirth, to: Date())
-        return Double(ageComponents.year!)
+        return Int(ageComponents.year!)
     }
     
     func setupUI() {
@@ -93,10 +93,17 @@ class ProfileViewController: UIViewController {
         ]
         self.navigationController?.navigationBar.isTranslucent = false
     }
+    
+    func calculateCarb() {
+        Store.shared.dailyCarbCount = 1200.0
+    }
 
 // MARK: - Actions
     
     @IBAction func calculateCarbCount(_ sender: UIButton) {
+        Store.shared.name = nameTextField.text!
+        Store.shared.surname = surnameTextField.text!
+        calculateCarb()
         let dialogMessage = UIAlertController(title: "Karbonhidrat Miktarı", message: "Merhaba \(nameTextField.text!) \(surnameTextField.text!), Kilon: \(weightTextField.text!) Boyun: \(heightTextField.text!) Yaşın: \(ageTextField.text!)", preferredStyle: .alert)
         let ok = UIAlertAction(title: "Tamam", style: .default, handler: { (action) -> Void in
             print("Count button tapped")

@@ -20,6 +20,8 @@
 		DC5D4E9B282E677B001E03D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC5D4E9A282E677B001E03D2 /* Main.storyboard */; };
 		DCA08143283646DA005A4760 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA08142283646DA005A4760 /* ProfileViewModel.swift */; };
 		DCA0814728364726005A4760 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA0814628364726005A4760 /* DateExtensions.swift */; };
+		DCAA5570283909120059E841 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAA556F283909120059E841 /* CircularProgressView.swift */; };
+		DCAA5572283916140059E841 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAA5571283916140059E841 /* Store.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		DC5D4E9A282E677B001E03D2 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		DCA08142283646DA005A4760 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		DCA0814628364726005A4760 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		DCAA556F283909120059E841 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		DCAA5571283916140059E841 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,7 @@
 		DC5D4E54282D3384001E03D2 /* CarbCount */ = {
 			isa = PBXGroup;
 			children = (
+				DCAA556E283908F60059E841 /* Views */,
 				DCA081442836470F005A4760 /* Extensions */,
 				DCA08141283646C4005A4760 /* ViewModels */,
 				DC5D4E9E282E6AF8001E03D2 /* ViewControllers */,
@@ -115,6 +120,7 @@
 				DC5D4E57282D3384001E03D2 /* SceneDelegate.swift */,
 				DC5D4E5E282D3386001E03D2 /* Assets.xcassets */,
 				DC5D4E63282D3386001E03D2 /* Info.plist */,
+				DCAA5571283916140059E841 /* Store.swift */,
 			);
 			path = CarbCount;
 			sourceTree = "<group>";
@@ -169,6 +175,14 @@
 				DCA0814628364726005A4760 /* DateExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DCAA556E283908F60059E841 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DCAA556F283909120059E841 /* CircularProgressView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,6 +318,8 @@
 			files = (
 				DCA0814728364726005A4760 /* DateExtensions.swift in Sources */,
 				DCA08143283646DA005A4760 /* ProfileViewModel.swift in Sources */,
+				DCAA5570283909120059E841 /* CircularProgressView.swift in Sources */,
+				DCAA5572283916140059E841 /* Store.swift in Sources */,
 				DC5D4E5A282D3384001E03D2 /* ViewController.swift in Sources */,
 				DC5D4E94282D5BB3001E03D2 /* FoodsViewController.swift in Sources */,
 				DC5D4E56282D3384001E03D2 /* AppDelegate.swift in Sources */,

@@ -69,15 +69,40 @@
                     <view key="view" contentMode="scaleToFill" id="een-Tq-lfn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qfi-Cc-dhN">
+                                <rect key="frame" x="32" y="102" width="350" height="350"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="Ro1-HB-1DO"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryU-Eh-QPU">
+                                <rect key="frame" x="41" y="28" width="257" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="692-7y-g0h"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qfi-Cc-dhN" firstAttribute="top" secondItem="692-7y-g0h" secondAttribute="top" constant="102" id="BIJ-uH-qTB"/>
+                            <constraint firstItem="692-7y-g0h" firstAttribute="trailing" secondItem="qfi-Cc-dhN" secondAttribute="trailing" constant="32" id="COr-oM-kuT"/>
+                            <constraint firstItem="qfi-Cc-dhN" firstAttribute="leading" secondItem="692-7y-g0h" secondAttribute="leading" constant="32" id="EeH-YW-kz3"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Anasayfa" image="home-tab" id="bNl-Bj-u5q"/>
                     <navigationItem key="navigationItem" title="Anasayfa" id="ILl-wD-Oxn"/>
+                    <connections>
+                        <outlet property="circularView" destination="qfi-Cc-dhN" id="0SO-pQ-Ff7"/>
+                        <outlet property="greetingLabel" destination="ryU-Eh-QPU" id="FAL-tF-8zA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pxf-7w-Ml1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-388" y="1180"/>
+            <point key="canvasLocation" x="-388.40579710144931" y="1179.9107142857142"/>
         </scene>
         <!--Profil-->
         <scene sceneID="gfR-sD-T6l">
@@ -230,6 +255,9 @@
         <image name="profile-tab" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
