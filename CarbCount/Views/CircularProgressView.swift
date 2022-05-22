@@ -48,7 +48,16 @@ class CircularProgressView: UIView {
         progressLayer.fillColor = UIColor.clear.cgColor
         progressLayer.strokeColor = progressColor.cgColor
         progressLayer.lineWidth = 50.0
-        progressLayer.strokeEnd = 0.8
+        progressLayer.strokeEnd = 0.4
         layer.addSublayer(progressLayer)
+    }
+    
+    func setProgressWithAnimation(duration: TimeInterval, value: Float ) {
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.duration = duration
+        animation.fromValue = 0
+        animation.toValue = value
+        progressLayer.strokeEnd = CGFloat(value)
+        progressLayer.add(animation, forKey: "animateprogress")
     }
 }

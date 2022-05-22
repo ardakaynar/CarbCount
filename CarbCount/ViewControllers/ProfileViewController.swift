@@ -80,6 +80,10 @@ class ProfileViewController: UIViewController {
         heightTextField.placeholder = viewModel.heightPlaceholder
         weightTextField.placeholder = viewModel.weightPlaceholder
         
+        nameTextField.text = "\(Store.shared.name)"
+        surnameTextField.text = "\(Store.shared.surname)"
+        ageTextField.text = "\(Store.shared.age)"
+        
         countButton.tintColor = .white
         countButton.backgroundColor = .red
     }
@@ -95,14 +99,21 @@ class ProfileViewController: UIViewController {
     }
     
     func calculateCarb() {
-        Store.shared.dailyCarbCount = 1200.0
+        Store.shared.dailyCarbCount = 1250.0
+        Store.shared.consumedCarbCount = 1000.0
+    }
+    
+    func saveProfileInfos() {
+        Store.shared.name = nameTextField.text!
+        Store.shared.surname = surnameTextField.text!
+        Store.shared.height = heightTextField.text!
+        Store.shared.weight = weightTextField.text!
     }
 
 // MARK: - Actions
     
     @IBAction func calculateCarbCount(_ sender: UIButton) {
-        Store.shared.name = nameTextField.text!
-        Store.shared.surname = surnameTextField.text!
+        saveProfileInfos()
         calculateCarb()
         let dialogMessage = UIAlertController(title: "Karbonhidrat Miktarı", message: "Merhaba \(nameTextField.text!) \(surnameTextField.text!), Kilon: \(weightTextField.text!) Boyun: \(heightTextField.text!) Yaşın: \(ageTextField.text!)", preferredStyle: .alert)
         let ok = UIAlertAction(title: "Tamam", style: .default, handler: { (action) -> Void in

@@ -65,22 +65,46 @@
         <!--Anasayfa-->
         <scene sceneID="XgA-In-dkG">
             <objects>
-                <viewController id="Ndh-8U-DdG" customClass="ViewController" customModule="CarbCount" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ndh-8U-DdG" customClass="MainViewController" customModule="CarbCount" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="een-Tq-lfn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qfi-Cc-dhN">
-                                <rect key="frame" x="32" y="102" width="350" height="350"/>
-                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <rect key="frame" x="32" y="198" width="350" height="350"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z24-Mu-8xB">
+                                        <rect key="frame" x="100" y="165" width="150" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="Lz6-4D-Ezh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <constraints>
+                                    <constraint firstItem="Z24-Mu-8xB" firstAttribute="top" secondItem="qfi-Cc-dhN" secondAttribute="top" constant="165" id="DOM-7C-Wt0"/>
+                                    <constraint firstAttribute="bottom" secondItem="Z24-Mu-8xB" secondAttribute="bottom" constant="165" id="LVA-D6-HP7"/>
                                     <constraint firstAttribute="height" constant="350" id="Ro1-HB-1DO"/>
+                                    <constraint firstItem="Z24-Mu-8xB" firstAttribute="centerX" secondItem="qfi-Cc-dhN" secondAttribute="centerX" id="udh-IF-c0S"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryU-Eh-QPU">
-                                <rect key="frame" x="41" y="28" width="257" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryU-Eh-QPU">
+                                <rect key="frame" x="16" y="124" width="382" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="d0Z-E6-TfO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hn3-YM-iAG">
+                                <rect key="frame" x="16" y="580" width="382" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ZpK-6E-OLi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -88,16 +112,27 @@
                         <viewLayoutGuide key="safeArea" id="692-7y-g0h"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="qfi-Cc-dhN" firstAttribute="top" secondItem="692-7y-g0h" secondAttribute="top" constant="102" id="BIJ-uH-qTB"/>
+                            <constraint firstItem="692-7y-g0h" firstAttribute="trailing" secondItem="ryU-Eh-QPU" secondAttribute="trailing" constant="16" id="4y2-8Y-hmX"/>
+                            <constraint firstItem="ryU-Eh-QPU" firstAttribute="leading" secondItem="692-7y-g0h" secondAttribute="leading" constant="16" id="7KV-pH-qaT"/>
+                            <constraint firstItem="692-7y-g0h" firstAttribute="trailing" secondItem="hn3-YM-iAG" secondAttribute="trailing" constant="16" id="8Jt-4M-Dkg"/>
+                            <constraint firstItem="qfi-Cc-dhN" firstAttribute="top" secondItem="ryU-Eh-QPU" secondAttribute="bottom" constant="24" id="8Ta-b9-Km1"/>
                             <constraint firstItem="692-7y-g0h" firstAttribute="trailing" secondItem="qfi-Cc-dhN" secondAttribute="trailing" constant="32" id="COr-oM-kuT"/>
+                            <constraint firstItem="hn3-YM-iAG" firstAttribute="leading" secondItem="692-7y-g0h" secondAttribute="leading" constant="16" id="EJY-x3-DWr"/>
                             <constraint firstItem="qfi-Cc-dhN" firstAttribute="leading" secondItem="692-7y-g0h" secondAttribute="leading" constant="32" id="EeH-YW-kz3"/>
+                            <constraint firstItem="hn3-YM-iAG" firstAttribute="centerX" secondItem="een-Tq-lfn" secondAttribute="centerX" id="GRL-8U-L65"/>
+                            <constraint firstItem="ryU-Eh-QPU" firstAttribute="centerX" secondItem="een-Tq-lfn" secondAttribute="centerX" id="Kqj-4R-1nn"/>
+                            <constraint firstItem="hn3-YM-iAG" firstAttribute="top" secondItem="qfi-Cc-dhN" secondAttribute="bottom" constant="32" id="PGo-sq-gfx"/>
+                            <constraint firstItem="ryU-Eh-QPU" firstAttribute="top" secondItem="692-7y-g0h" secondAttribute="top" constant="36" id="kOZ-Wo-6Aw"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Anasayfa" image="home-tab" id="bNl-Bj-u5q"/>
                     <navigationItem key="navigationItem" title="Anasayfa" id="ILl-wD-Oxn"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="circularView" destination="qfi-Cc-dhN" id="0SO-pQ-Ff7"/>
                         <outlet property="greetingLabel" destination="ryU-Eh-QPU" id="FAL-tF-8zA"/>
+                        <outlet property="lastFeedItemLabel" destination="hn3-YM-iAG" id="Uwb-Br-hX0"/>
+                        <outlet property="remainingCarbLabel" destination="Z24-Mu-8xB" id="WZo-Hv-Hnp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pxf-7w-Ml1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -255,9 +290,6 @@
         <image name="profile-tab" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
