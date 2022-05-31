@@ -24,7 +24,7 @@ class ProfileViewController: UIViewController {
     
     let viewModel = ProfileViewModel()
     let datePicker = UIDatePicker()
-
+    
 // MARK: - Functions
     
     override func viewDidLoad() {
@@ -89,18 +89,35 @@ class ProfileViewController: UIViewController {
     }
     
     func setupNavBar() {
-        self.navigationItem.title = viewModel.navigationTitle
+        let barAppearance = UINavigationBarAppearance()
+        barAppearance.backgroundColor = .systemBlue
+        barAppearance.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.black]
+        
+        navigationItem.standardAppearance = barAppearance
+        navigationItem.scrollEdgeAppearance = barAppearance
+     
+        self.navigationItem.title = "Profil"
         self.navigationController?.navigationBar.barTintColor = .white
         self.navigationController?.navigationBar.tintColor = .white
         self.navigationController?.navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.white,
+            NSAttributedString.Key.foregroundColor: UIColor.white
         ]
         self.navigationController?.navigationBar.isTranslucent = false
     }
     
     func calculateCarb() {
-        Store.shared.dailyCarbCount = 1250.0
-        Store.shared.consumedCarbCount = 1000.0
+        let weight: Double = Double(Store.shared.weight) ?? 0
+        if Store.shared.age > 15 && Store.shared.age <= 18 {
+            Store.shared.dailyCarbCount = Store.shared.isMale ? (17.6 * weight) + 656 : (13.3 * weight) + 690
+        } else if Store.shared.age > 18 && Store.shared.age <= 30 {
+            Store.shared.dailyCarbCount =  Store.shared.isMale ? (18.0 * weight) + 690 : (14.8 * weight) + 485
+        } else if Store.shared.age > 30 && Store.shared.age <= 60 {
+            Store.shared.dailyCarbCount =  Store.shared.isMale ? (11.4 * weight) + 870 : (8.1 * weight) + 842
+        } else {
+            Store.shared.dailyCarbCount =  Store.shared.isMale ? (11.7 * weight) + 585 : (9.0 * weight) + 656
+        }
+        
     }
     
     func saveProfileInfos() {

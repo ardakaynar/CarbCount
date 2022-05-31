@@ -9,7 +9,7 @@ import Foundation
 
 class ProfileViewModel {
     
-    var maxDate: Date = Calendar.defaultLocalizedCalendar().date(byAdding: .year, value: -18, to: Date())!
+    var maxDate: Date = Calendar.defaultLocalizedCalendar().date(byAdding: .year, value: -15, to: Date())!
     
     var birthdayPlaceholder: String {
         "Doğum Günü"

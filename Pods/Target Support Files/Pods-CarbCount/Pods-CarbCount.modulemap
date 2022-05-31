@@ -1,0 +1,6 @@
+framework module Pods_CarbCount {
+  umbrella header "Pods-CarbCount-umbrella.h"
+
+  export *
+  module * { export * }
+}

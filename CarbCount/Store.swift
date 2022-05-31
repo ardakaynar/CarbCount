@@ -10,6 +10,7 @@ import Foundation
 class Store: NSObject {
     static let shared = Store()
     
+    var isMale: Bool = true
     var age: Int {
         get {
             return UserDefaults.standard.integer(forKey: "Yaş")
