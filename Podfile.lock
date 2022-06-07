@@ -1,16 +1,26 @@
 PODS:
   - DropDown (2.3.13)
+  - Realm (10.28.0):
+    - Realm/Headers (= 10.28.0)
+  - Realm/Headers (10.28.0)
+  - RealmSwift (10.28.0):
+    - Realm (= 10.28.0)
 
 DEPENDENCIES:
   - DropDown
+  - RealmSwift (~> 10)
 
 SPEC REPOS:
   trunk:
     - DropDown
+    - Realm
+    - RealmSwift
 
 SPEC CHECKSUMS:
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  Realm: a0dd4e07530faaa327244ddb4ecb445c98f0537a
+  RealmSwift: 625a21f03e01e80f6b9b86bade269ebebcd7892c
 
-PODFILE CHECKSUM: 35222291105ea0272f728b5ca7ccd2f5992447b3
+PODFILE CHECKSUM: b62d1571382fc41d042748c9dd93b3103bac8870
 
 COCOAPODS: 1.11.2

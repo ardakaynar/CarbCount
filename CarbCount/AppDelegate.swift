@@ -6,14 +6,19 @@
 //
 
 import UIKit
+import RealmSwift
+
+let app = App(id: "carbcount-rkrsd")
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow? = nil
+    
     var mainNavigationController: UINavigationController? {
         let tabController =  self.window?.rootViewController as? UITabBarController
         return tabController?.selectedViewController as? UINavigationController
     }
+    
     var tabController: UITabBarController? {
         return self.window?.rootViewController as? UITabBarController
     }

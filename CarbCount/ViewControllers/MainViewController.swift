@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MainViewController: UIViewController {
 
@@ -17,6 +18,7 @@ class MainViewController: UIViewController {
     
     let viewModel = MainViewModel()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -26,6 +28,7 @@ class MainViewController: UIViewController {
         cp.tag = 101
         self.circularView.addSubview(cp)
         //cp.progressLayer.strokeEnd = 0.8
+        
     }
     
     @objc func animateProgress() {

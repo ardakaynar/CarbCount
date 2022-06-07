@@ -6,10 +6,25 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchResultsUpdating {
+    
+    class FoodItems: Object {
+        @Persisted(primaryKey: true) var _id: ObjectId
+        @Persisted var foodName = ""
+        @Persisted var imageName = ""
+        @Persisted var carbResult = ""
+        convenience init(carbResult: String, imageName: String, foodName: String) {
+            self.init()
+            self.foodName = foodName
+            self.carbResult = carbResult
+            self.imageName = imageName
+        }
 
+    }
 
+    
     struct CellItems {
         let foodName: String
         let imageName: String
@@ -69,6 +84,65 @@ class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewD
         table.delegate = self
         initSearchController()
         setupUI()
+        
+     
+        app.login(credentials: Credentials.anonymous) { (result) in
+            // Remember to dispatch back to the main thread in completion handlers
+            // if you want to do anything on the UI.
+            DispatchQueue.main.async {
+                switch result {
+                case .failure(let error):
+                    print("Login failed: \(error)")
+                case .success(let user):
+                    print("Login as \(user) succeeded!")
+                    // Continue below
+                }
+            
+                // mongodb-atlas is the cluster service name
+                let client = app.currentUser!.mongoClient("mongodb-atlas")
+                // Select the database
+                let database = client.database(named: "userTest")
+                // Select the collection
+                let collection = database.collection(withName: "userId")
+                let test: Document = ["DeviceModel": "iPhone12,1"]
+                let drink: Document = ["Username": "GOKAYS-PC#HBFGBR", "DeviceModel": "iPhone12,1", "_id": "898b1168124175aeb40d95e0e573e83e4d20c293"]
+                let drink2: Document = ["Username": "GOKAYbbbbbbbS-PC#HBFGBR", "DeviceModel": "iPhone12,1", "_id": "32142512421412312"]
+                let drink3: Document = ["Username": "GOKAYaaaaaaaS-PC#HBFGBR", "DeviceModel": "iPhone12,1", "_id": "tr12451241241231231252ue"]
+                collection.find(filter: test) { result in
+                    switch result {
+                    case .failure(let error):
+                        print("Did not find matching documents: \(error.localizedDescription)")
+                        return
+                    case .success(let documents):
+                        print("Found a matching document: \(documents)")
+                        for document in documents {
+                            print("Coffee drink: \(document)")
+                        }
+                    }
+                }
+                collection.insertOne(drink2) { result in
+                    switch result {
+                    case .failure(let error):
+                        print("Call to MongoDB failed: \(error.localizedDescription)")
+                        return
+                    case .success(let objectId):
+                        // Success returns the objectId for the inserted document
+                        print("Successfully inserted a document with id: \(objectId)")
+                    }
+                }
+                // Insert the documents into the collection
+                collection.insertMany([drink2, drink3]) { result in
+                    switch result {
+                    case .failure(let error):
+                        print("Call to MongoDB failed: \(error.localizedDescription)")
+                        return
+                    case .success(let objectIds):
+                        print("Successfully inserted \(objectIds.count) new documents.")
+                    }
+                }
+            }
+        }
+        
     }
     
     func setupUI() {

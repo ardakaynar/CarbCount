@@ -7,14 +7,6 @@ target 'CarbCount' do
 
   # Pods for CarbCount
 pod 'DropDown'
-
-  target 'CarbCountTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'CarbCountUITests' do
-    # Pods for testing
-  end
+pod 'RealmSwift', '~>10'
 
 end

@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2699FBBD65396A2CAFA0C10E /* Pods_CarbCountTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CA15C09FDCC14F82577AA6 /* Pods_CarbCountTests.framework */; };
 		39BDD9FD5179C2C1712E9234 /* Pods_CarbCount.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C989DCAEBE367DB8F5B8F5C /* Pods_CarbCount.framework */; };
-		DB5776B54C27D126B55FEC03 /* Pods_CarbCount_CarbCountUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79666F14495B8656B59B2665 /* Pods_CarbCount_CarbCountUITests.framework */; };
 		DC5D4E56282D3384001E03D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5D4E55282D3384001E03D2 /* AppDelegate.swift */; };
 		DC5D4E58282D3384001E03D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5D4E57282D3384001E03D2 /* SceneDelegate.swift */; };
 		DC5D4E5A282D3384001E03D2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5D4E59282D3384001E03D2 /* MainViewController.swift */; };
@@ -49,13 +47,8 @@
 
 /* Begin PBXFileReference section */
 		044630B323BC4AB33B84EEB0 /* Pods-CarbCount.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarbCount.release.xcconfig"; path = "Target Support Files/Pods-CarbCount/Pods-CarbCount.release.xcconfig"; sourceTree = "<group>"; };
-		1C33B3F883C6312E183D2A6C /* Pods-CarbCount-CarbCountUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarbCount-CarbCountUITests.debug.xcconfig"; path = "Target Support Files/Pods-CarbCount-CarbCountUITests/Pods-CarbCount-CarbCountUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6C989DCAEBE367DB8F5B8F5C /* Pods_CarbCount.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CarbCount.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F927153D7F0BCACFBE1E9D6 /* Pods-CarbCount.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarbCount.debug.xcconfig"; path = "Target Support Files/Pods-CarbCount/Pods-CarbCount.debug.xcconfig"; sourceTree = "<group>"; };
-		79666F14495B8656B59B2665 /* Pods_CarbCount_CarbCountUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CarbCount_CarbCountUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9B452BE36F27B27AEC680FC5 /* Pods-CarbCountTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarbCountTests.release.xcconfig"; path = "Target Support Files/Pods-CarbCountTests/Pods-CarbCountTests.release.xcconfig"; sourceTree = "<group>"; };
-		A2CA15C09FDCC14F82577AA6 /* Pods_CarbCountTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CarbCountTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BCAFE7217A369409DD45E968 /* Pods-CarbCountTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarbCountTests.debug.xcconfig"; path = "Target Support Files/Pods-CarbCountTests/Pods-CarbCountTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DC5D4E52282D3384001E03D2 /* CarbCount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarbCount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC5D4E55282D3384001E03D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC5D4E57282D3384001E03D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,7 +71,6 @@
 		DCAA556F283909120059E841 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		DCAA5571283916140059E841 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		DCAA5573283A8CFE0059E841 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		E29E10FA118078E23526203C /* Pods-CarbCount-CarbCountUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarbCount-CarbCountUITests.release.xcconfig"; path = "Target Support Files/Pods-CarbCount-CarbCountUITests/Pods-CarbCount-CarbCountUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +86,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2699FBBD65396A2CAFA0C10E /* Pods_CarbCountTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,7 +93,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB5776B54C27D126B55FEC03 /* Pods_CarbCount_CarbCountUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,10 +104,6 @@
 			children = (
 				6F927153D7F0BCACFBE1E9D6 /* Pods-CarbCount.debug.xcconfig */,
 				044630B323BC4AB33B84EEB0 /* Pods-CarbCount.release.xcconfig */,
-				1C33B3F883C6312E183D2A6C /* Pods-CarbCount-CarbCountUITests.debug.xcconfig */,
-				E29E10FA118078E23526203C /* Pods-CarbCount-CarbCountUITests.release.xcconfig */,
-				BCAFE7217A369409DD45E968 /* Pods-CarbCountTests.debug.xcconfig */,
-				9B452BE36F27B27AEC680FC5 /* Pods-CarbCountTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -126,8 +112,6 @@
 			isa = PBXGroup;
 			children = (
 				6C989DCAEBE367DB8F5B8F5C /* Pods_CarbCount.framework */,
-				79666F14495B8656B59B2665 /* Pods_CarbCount_CarbCountUITests.framework */,
-				A2CA15C09FDCC14F82577AA6 /* Pods_CarbCountTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -268,7 +252,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DC5D4E7F282D3387001E03D2 /* Build configuration list for PBXNativeTarget "CarbCountTests" */;
 			buildPhases = (
-				63645E7882E4157D91AEBDB1 /* [CP] Check Pods Manifest.lock */,
 				DC5D4E64282D3387001E03D2 /* Sources */,
 				DC5D4E65282D3387001E03D2 /* Frameworks */,
 				DC5D4E66282D3387001E03D2 /* Resources */,
@@ -287,11 +270,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DC5D4E82282D3387001E03D2 /* Build configuration list for PBXNativeTarget "CarbCountUITests" */;
 			buildPhases = (
-				6A93070B6C61AED8B8F11C87 /* [CP] Check Pods Manifest.lock */,
 				DC5D4E6E282D3387001E03D2 /* Sources */,
 				DC5D4E6F282D3387001E03D2 /* Frameworks */,
 				DC5D4E70282D3387001E03D2 /* Resources */,
-				331F5D2B2875E6DB90424515 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -374,67 +355,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		331F5D2B2875E6DB90424515 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CarbCount-CarbCountUITests/Pods-CarbCount-CarbCountUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CarbCount-CarbCountUITests/Pods-CarbCount-CarbCountUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CarbCount-CarbCountUITests/Pods-CarbCount-CarbCountUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		63645E7882E4157D91AEBDB1 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CarbCountTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6A93070B6C61AED8B8F11C87 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CarbCount-CarbCountUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		C758F89D1D391F2E8BE5E6EF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -716,7 +636,6 @@
 		};
 		DC5D4E80282D3387001E03D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BCAFE7217A369409DD45E968 /* Pods-CarbCountTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -737,7 +656,6 @@
 		};
 		DC5D4E81282D3387001E03D2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9B452BE36F27B27AEC680FC5 /* Pods-CarbCountTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -758,7 +676,6 @@
 		};
 		DC5D4E83282D3387001E03D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1C33B3F883C6312E183D2A6C /* Pods-CarbCount-CarbCountUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -777,7 +694,6 @@
 		};
 		DC5D4E84282D3387001E03D2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E29E10FA118078E23526203C /* Pods-CarbCount-CarbCountUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
