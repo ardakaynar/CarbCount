@@ -11,6 +11,10 @@ class ProfileViewController: UIViewController {
 
 // MARK: - Outlets
     
+    @IBOutlet weak var femaleButton: UIButton!
+    @IBOutlet weak var maleButton: UIButton!
+    @IBOutlet weak var infoCarbCalculateLabel: UILabel!
+    @IBOutlet weak var infoCarbLabel: UILabel!
     @IBOutlet weak var birthDateTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var countButton: UIButton!
@@ -39,7 +43,7 @@ class ProfileViewController: UIViewController {
         toolbar.sizeToFit()
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: nil, action: #selector(donePressed))
-        doneButton.tintColor = .green
+        doneButton.tintColor = .blue
         toolbar.setItems([spacer, doneButton], animated: true)
         birthDateTextField.inputAccessoryView = toolbar
         datePicker.date = viewModel.maxDate
@@ -58,6 +62,7 @@ class ProfileViewController: UIViewController {
         formatter.locale = Locale(identifier: "tr")
         formatter.dateFormat = "dd.MM.yyyy"
         birthDateTextField.text = formatter.string(from: datePicker.date)
+        Store.shared.birthDate = birthDateTextField.text!
         Store.shared.age = calculateAge(dateOfBirth: datePicker.date)
         ageTextField.text = "\(Store.shared.age) yaşında"
         self.view.endEditing(true)
@@ -82,15 +87,45 @@ class ProfileViewController: UIViewController {
         
         nameTextField.text = "\(Store.shared.name)"
         surnameTextField.text = "\(Store.shared.surname)"
-        ageTextField.text = "\(Store.shared.age)"
-        
+        ageTextField.text = "\(Store.shared.age) yaşında"
+        birthDateTextField.text = "\(Store.shared.birthDate)"
+        weightTextField.text = "\(Store.shared.weight)"
+        heightTextField.text = "\(Store.shared.height)"
+        if Store.shared.isMale {
+            maleButton.isSelected = true
+            femaleButton.isSelected = false
+        } else {
+            femaleButton.isSelected = true
+            maleButton.isSelected = false
+        }
         countButton.tintColor = .white
-        countButton.backgroundColor = .red
+        countButton.backgroundColor = UIColor(red: 110/255.0, green: 184/255.0, blue: 168/255.0, alpha: 1.00)
+        
+        infoCarbLabel.text = viewModel.infoCarbLabel
+        infoCarbLabel.textColor = .gray
+        let tabGesture = UITapGestureRecognizer(target: self, action: #selector(infoCarbTapped(sender:)))
+        infoCarbLabel.addGestureRecognizer(tabGesture)
+        
+        infoCarbCalculateLabel.text = viewModel.infoCarbCalculateLabel
+        infoCarbCalculateLabel.textColor = .gray
+        let tabGesture2 = UITapGestureRecognizer(target: self, action: #selector(infoCarbCalculateTapped(sender:)))
+        infoCarbCalculateLabel.addGestureRecognizer(tabGesture2)
+        
+    }
+    
+    @objc func infoCarbTapped(sender: UITapGestureRecognizer) {
+        let viewController = InfoCarbViewController()
+        present(viewController, animated: true, completion: nil)
+    }
+    
+    @objc func infoCarbCalculateTapped(sender: UITapGestureRecognizer) {
+        let viewController2 = CarbCalculateInfoViewController()
+        present(viewController2, animated: true, completion: nil)
     }
     
     func setupNavBar() {
         let barAppearance = UINavigationBarAppearance()
-        barAppearance.backgroundColor = .systemBlue
+        barAppearance.backgroundColor = UIColor(red: 198/255.0, green: 80/255.0, blue: 90/255.0, alpha: 1.00)
         barAppearance.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.black]
         
@@ -132,12 +167,26 @@ class ProfileViewController: UIViewController {
     @IBAction func calculateCarbCount(_ sender: UIButton) {
         saveProfileInfos()
         calculateCarb()
-        let dialogMessage = UIAlertController(title: "Karbonhidrat Miktarı", message: "Merhaba \(nameTextField.text!) \(surnameTextField.text!), Kilon: \(weightTextField.text!) Boyun: \(heightTextField.text!) Yaşın: \(ageTextField.text!)", preferredStyle: .alert)
+        Store.shared.consumedCarbCount = 0
+        let dialogMessage = UIAlertController(title: "Karbonhidrat Miktarı", message: "Merhaba \(Store.shared.name)!\n Günlük tüketmen gereken karbonhidrat miktarı \(Int(Store.shared.dailyCarbCount)) gr kadardır.", preferredStyle: .alert)
         let ok = UIAlertAction(title: "Tamam", style: .default, handler: { (action) -> Void in
             print("Count button tapped")
          })
         dialogMessage.addAction(ok)
         self.present(dialogMessage, animated: true, completion: nil)
     }
+    @IBAction func radioButtonTapped(_ sender: UIButton) {
+        
+        if sender.tag == 0 {
+            maleButton.isSelected = true
+            femaleButton.isSelected = false
+            Store.shared.isMale = true
+        } else if sender.tag == 1 {
+            maleButton.isSelected = false
+            femaleButton.isSelected = true
+            Store.shared.isMale = false
+        }
+    }
+   
     
 }

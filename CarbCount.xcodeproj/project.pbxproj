@@ -20,6 +20,13 @@
 		DC5D4E94282D5BB3001E03D2 /* FoodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5D4E93282D5BB3001E03D2 /* FoodsViewController.swift */; };
 		DC5D4E9B282E677B001E03D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC5D4E9A282E677B001E03D2 /* Main.storyboard */; };
 		DC7F54DF2845CADE005E4318 /* FoodsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7F54DE2845CADE005E4318 /* FoodsViewModel.swift */; };
+		DC8D70BE285234F500AFB45B /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8D70BD285234F500AFB45B /* MealTableViewCell.swift */; };
+		DC8D70C128525F5400AFB45B /* InfoCarbViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8D70BF28525F5400AFB45B /* InfoCarbViewController.swift */; };
+		DC8D70C228525F5400AFB45B /* InfoCarbViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC8D70C028525F5400AFB45B /* InfoCarbViewController.xib */; };
+		DC8D70C42852609600AFB45B /* InfoCarbViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8D70C32852609600AFB45B /* InfoCarbViewModel.swift */; };
+		DC8D70C7285285B500AFB45B /* CarbCalculateInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8D70C5285285B500AFB45B /* CarbCalculateInfoViewController.swift */; };
+		DC8D70C8285285B500AFB45B /* CarbCalculateInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC8D70C6285285B500AFB45B /* CarbCalculateInfoViewController.xib */; };
+		DC8D70CA2852863800AFB45B /* CarbCalculateInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8D70C92852863800AFB45B /* CarbCalculateInfoViewModel.swift */; };
 		DCA08143283646DA005A4760 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA08142283646DA005A4760 /* ProfileViewModel.swift */; };
 		DCA0814728364726005A4760 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA0814628364726005A4760 /* DateExtensions.swift */; };
 		DCA26DD12843FBE400D94791 /* FoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA26DD02843FBE400D94791 /* FoodTableViewCell.swift */; };
@@ -65,6 +72,13 @@
 		DC5D4E93282D5BB3001E03D2 /* FoodsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodsViewController.swift; sourceTree = "<group>"; };
 		DC5D4E9A282E677B001E03D2 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		DC7F54DE2845CADE005E4318 /* FoodsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodsViewModel.swift; sourceTree = "<group>"; };
+		DC8D70BD285234F500AFB45B /* MealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
+		DC8D70BF28525F5400AFB45B /* InfoCarbViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCarbViewController.swift; sourceTree = "<group>"; };
+		DC8D70C028525F5400AFB45B /* InfoCarbViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoCarbViewController.xib; sourceTree = "<group>"; };
+		DC8D70C32852609600AFB45B /* InfoCarbViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCarbViewModel.swift; sourceTree = "<group>"; };
+		DC8D70C5285285B500AFB45B /* CarbCalculateInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbCalculateInfoViewController.swift; sourceTree = "<group>"; };
+		DC8D70C6285285B500AFB45B /* CarbCalculateInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarbCalculateInfoViewController.xib; sourceTree = "<group>"; };
+		DC8D70C92852863800AFB45B /* CarbCalculateInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbCalculateInfoViewModel.swift; sourceTree = "<group>"; };
 		DCA08142283646DA005A4760 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		DCA0814628364726005A4760 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		DCA26DD02843FBE400D94791 /* FoodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTableViewCell.swift; sourceTree = "<group>"; };
@@ -188,6 +202,10 @@
 				DC5D4E59282D3384001E03D2 /* MainViewController.swift */,
 				DC5D4E91282D5B60001E03D2 /* ProfileViewController.swift */,
 				DC5D4E93282D5BB3001E03D2 /* FoodsViewController.swift */,
+				DC8D70BF28525F5400AFB45B /* InfoCarbViewController.swift */,
+				DC8D70C028525F5400AFB45B /* InfoCarbViewController.xib */,
+				DC8D70C5285285B500AFB45B /* CarbCalculateInfoViewController.swift */,
+				DC8D70C6285285B500AFB45B /* CarbCalculateInfoViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -198,6 +216,8 @@
 				DCA08142283646DA005A4760 /* ProfileViewModel.swift */,
 				DCAA5573283A8CFE0059E841 /* MainViewModel.swift */,
 				DC7F54DE2845CADE005E4318 /* FoodsViewModel.swift */,
+				DC8D70C32852609600AFB45B /* InfoCarbViewModel.swift */,
+				DC8D70C92852863800AFB45B /* CarbCalculateInfoViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -214,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				DCA26DD02843FBE400D94791 /* FoodTableViewCell.swift */,
+				DC8D70BD285234F500AFB45B /* MealTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -334,6 +355,8 @@
 			files = (
 				DC5D4E9B282E677B001E03D2 /* Main.storyboard in Resources */,
 				DC5D4E62282D3386001E03D2 /* LaunchScreen.storyboard in Resources */,
+				DC8D70C228525F5400AFB45B /* InfoCarbViewController.xib in Resources */,
+				DC8D70C8285285B500AFB45B /* CarbCalculateInfoViewController.xib in Resources */,
 				DC5D4E5F282D3386001E03D2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,6 +424,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC8D70C128525F5400AFB45B /* InfoCarbViewController.swift in Sources */,
+				DC8D70C7285285B500AFB45B /* CarbCalculateInfoViewController.swift in Sources */,
+				DC8D70BE285234F500AFB45B /* MealTableViewCell.swift in Sources */,
 				DCA26DD12843FBE400D94791 /* FoodTableViewCell.swift in Sources */,
 				DCA0814728364726005A4760 /* DateExtensions.swift in Sources */,
 				DCA08143283646DA005A4760 /* ProfileViewModel.swift in Sources */,
@@ -408,8 +434,10 @@
 				DCAA5572283916140059E841 /* Store.swift in Sources */,
 				DC5D4E5A282D3384001E03D2 /* MainViewController.swift in Sources */,
 				DCAA5574283A8CFE0059E841 /* MainViewModel.swift in Sources */,
+				DC8D70CA2852863800AFB45B /* CarbCalculateInfoViewModel.swift in Sources */,
 				DC5D4E94282D5BB3001E03D2 /* FoodsViewController.swift in Sources */,
 				DC5D4E56282D3384001E03D2 /* AppDelegate.swift in Sources */,
+				DC8D70C42852609600AFB45B /* InfoCarbViewModel.swift in Sources */,
 				DC5D4E92282D5B60001E03D2 /* ProfileViewController.swift in Sources */,
 				DC7F54DF2845CADE005E4318 /* FoodsViewModel.swift in Sources */,
 				DC5D4E58282D3384001E03D2 /* SceneDelegate.swift in Sources */,

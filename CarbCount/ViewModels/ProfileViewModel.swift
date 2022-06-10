@@ -28,14 +28,22 @@ class ProfileViewModel {
     }
     
     var heightPlaceholder: String {
-        "Boy"
+        "Boy - (Cm)"
     }
     
     var weightPlaceholder: String {
-        "Kilo"
+        "Kilo - (Kg)"
     }
     
     var navigationTitle: String {
         "Profil"
+    }
+    
+    var infoCarbLabel: String {
+        "Karbonhidrat ve karbonhidratın önemi hakkında daha fazla bilgi almak için tıklayınız."
+    }
+    
+    var infoCarbCalculateLabel: String {
+        "Günlük tüketmen gereken karbonhidrat miktarının hesaplanması hakkında bilgi almak için tıklayınız."
     }
 }

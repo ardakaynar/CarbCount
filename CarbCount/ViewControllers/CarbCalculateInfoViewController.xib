@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CarbCalculateInfoViewController" customModule="CarbCount" customModuleProvider="target">
+            <connections>
+                <outlet property="descriptionLabel" destination="TUA-Sg-ewy" id="PxS-B3-4tf"/>
+                <outlet property="dismissButton" destination="2eT-2h-xWc" id="9jf-q1-ifa"/>
+                <outlet property="titleLabel" destination="ach-Dk-DPT" id="Znt-Ot-MfD"/>
+                <outlet property="view" destination="oke-cx-wAl" id="Pnv-Lr-uXp"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="oke-cx-wAl">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xb3-lL-n90">
+                    <rect key="frame" x="0.0" y="44" width="414" height="62"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2eT-2h-xWc">
+                            <rect key="frame" x="8" y="16" width="42" height="31"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
+                            <connections>
+                                <action selector="dismissButtonTapped:" destination="-1" eventType="touchUpInside" id="5jX-iG-0wp"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ach-Dk-DPT">
+                            <rect key="frame" x="133" y="20" width="162" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBlueColor"/>
+                </view>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E9e-no-4oi">
+                    <rect key="frame" x="0.0" y="107" width="414" height="818"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUA-Sg-ewy">
+                            <rect key="frame" x="8" y="160" width="382" height="20.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="382" id="tQ8-pV-3iO"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="carbImage" translatesAutoresizingMaskIntoConstraints="NO" id="hqx-tg-1KI">
+                            <rect key="frame" x="87" y="8" width="240" height="128"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="TUA-Sg-ewy" firstAttribute="top" secondItem="E9e-no-4oi" secondAttribute="top" constant="160" id="0MS-Vw-0tT"/>
+                        <constraint firstAttribute="bottom" secondItem="TUA-Sg-ewy" secondAttribute="bottom" constant="20" id="7sr-Az-qqg"/>
+                        <constraint firstItem="TUA-Sg-ewy" firstAttribute="leading" secondItem="E9e-no-4oi" secondAttribute="leadingMargin" id="fOE-14-07f"/>
+                        <constraint firstAttribute="trailing" secondItem="TUA-Sg-ewy" secondAttribute="trailing" constant="24" id="oUi-lR-NG5"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="O3A-ac-1Be"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="O3A-ac-1Be" firstAttribute="trailing" secondItem="Xb3-lL-n90" secondAttribute="trailing" id="0Vl-4f-bRG"/>
+                <constraint firstItem="Xb3-lL-n90" firstAttribute="top" secondItem="E9e-no-4oi" secondAttribute="top" constant="-63" id="7VX-Cz-01k"/>
+                <constraint firstItem="E9e-no-4oi" firstAttribute="leading" secondItem="O3A-ac-1Be" secondAttribute="leading" id="9Eo-96-3UI"/>
+                <constraint firstItem="E9e-no-4oi" firstAttribute="top" secondItem="O3A-ac-1Be" secondAttribute="top" constant="63" id="Afm-Jm-O99"/>
+                <constraint firstItem="Xb3-lL-n90" firstAttribute="leading" secondItem="O3A-ac-1Be" secondAttribute="leading" id="EIh-sN-y28"/>
+                <constraint firstItem="O3A-ac-1Be" firstAttribute="trailing" secondItem="E9e-no-4oi" secondAttribute="trailing" id="HqQ-b8-yMI"/>
+                <constraint firstItem="E9e-no-4oi" firstAttribute="top" secondItem="Xb3-lL-n90" secondAttribute="bottom" constant="1" id="d1n-Hv-BaV"/>
+                <constraint firstItem="O3A-ac-1Be" firstAttribute="bottom" secondItem="E9e-no-4oi" secondAttribute="bottom" constant="-63" id="xMq-jx-dv5"/>
+            </constraints>
+            <point key="canvasLocation" x="131.8840579710145" y="131.91964285714286"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="carbImage" width="430" height="372"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

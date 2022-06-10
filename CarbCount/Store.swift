@@ -10,7 +10,19 @@ import Foundation
 class Store: NSObject {
     static let shared = Store()
     
+    var foodCount: Int = 0
+    
+    struct MealItems {
+        let foodName: String
+        let carbCount: String
+        let foodDateTime: String
+        let foodCount: String
+    }
+    
+    var mealData: [MealItems] = []
+    
     var isMale: Bool = true
+    
     var age: Int {
         get {
             return UserDefaults.standard.integer(forKey: "Yaş")
@@ -26,6 +38,15 @@ class Store: NSObject {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: "boy")
+        }
+    }
+    
+    var birthDate: String {
+        get {
+            return UserDefaults.standard.string(forKey: "birthDate") ?? ""
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "birthDate")
         }
     }
     

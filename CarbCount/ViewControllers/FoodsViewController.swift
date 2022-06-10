@@ -10,38 +10,36 @@ import RealmSwift
 
 class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchResultsUpdating {
     
-    class FoodItems: Object {
-        @Persisted(primaryKey: true) var _id: ObjectId
-        @Persisted var foodName = ""
-        @Persisted var imageName = ""
-        @Persisted var carbResult = ""
-        convenience init(carbResult: String, imageName: String, foodName: String) {
-            self.init()
-            self.foodName = foodName
-            self.carbResult = carbResult
-            self.imageName = imageName
-        }
-
-    }
-
-    
+    var tempData = [Any]()
+    var testData: [Int] = []
     struct CellItems {
         let foodName: String
-        let imageName: String
-        let carbResult: String
+        let foodImage: String
+        let carbPerSession: Int
+        let carbPerGram: Int
+        let enabledAmountTypes: [Int]
     }
+//
+//    struct MealItems {
+//        let foodName: String
+//        let carbCount: String
+//        let foodDateTime: String
+//        let foodCount: String
+//    }
     
-    let foodData: [CellItems] = [
-        CellItems(foodName: "Sütaş Yarım Yağlı Süt", imageName: "sample_product", carbResult: "100"),
-        CellItems(foodName: "Makarna", imageName: "sample_product", carbResult: "200"),
-        CellItems(foodName: "Ispanak", imageName: "sample_product", carbResult: "300"),
-        CellItems(foodName: "Ayran", imageName: "sample_product", carbResult: "400"),
-        CellItems(foodName: "Tavuk Dürüm", imageName: "sample_product", carbResult: "500"),
-        CellItems(foodName: "Makarna", imageName: "sample_product", carbResult: "200"),
-        CellItems(foodName: "Ispanak", imageName: "sample_product", carbResult: "300"),
-        CellItems(foodName: "Ayran", imageName: "sample_product", carbResult: "400"),
-        CellItems(foodName: "Tavuk Dürüm", imageName: "sample_product", carbResult: "500")
+    static var foodData: [CellItems] = [
+        CellItems(foodName: "Sütaş Yarım Yağlı Süt", foodImage: "sample_product", carbPerSession: 100, carbPerGram: 100, enabledAmountTypes: [0,1,3]),
+        CellItems(foodName: "Makarna", foodImage: "sample_product", carbPerSession: 100, carbPerGram: 100, enabledAmountTypes: [1]),
+        CellItems(foodName: "Ispanak", foodImage: "sample_product", carbPerSession: 100, carbPerGram: 100, enabledAmountTypes: [2]),
+        CellItems(foodName: "Ayran", foodImage: "sample_product",carbPerSession: 100, carbPerGram: 100, enabledAmountTypes: [3]),
+        CellItems(foodName: "Tavuk Dürüm", foodImage: "sample_product", carbPerSession: 100, carbPerGram: 100, enabledAmountTypes: [4]),
+        CellItems(foodName: "Makarna2", foodImage: "sample_product", carbPerSession: 100, carbPerGram: 100, enabledAmountTypes: []),
+        CellItems(foodName: "Ispanak2", foodImage: "sample_product", carbPerSession: 100, carbPerGram: 100, enabledAmountTypes: []),
+        CellItems(foodName: "Ayran2", foodImage: "sample_product", carbPerSession: 100, carbPerGram: 100, enabledAmountTypes: []),
+        CellItems(foodName: "Tavuk Dürüm2", foodImage: "sample_product", carbPerSession: 100, carbPerGram: 100, enabledAmountTypes: [])
     ]
+    
+//    static var mealData: [MealItems] = []
     
     var filteredData = [CellItems]()
     
@@ -65,7 +63,7 @@ class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewD
         searchController.searchBar.searchTextField.placeholder = "Bugün ne yedin?"
         searchController.searchBar.value(forKey: "searchField")
         if let textfield = searchController.searchBar.value(forKey: "searchField") as? UITextField {
-            textfield.backgroundColor = UIColor.systemBlue
+            textfield.backgroundColor = UIColor(red: 198/255.0, green: 80/255.0, blue: 90/255.0, alpha: 1.00)
             textfield.attributedPlaceholder = NSAttributedString(string: textfield.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.black])
             textfield.textColor = UIColor.black
             if let leftView = textfield.leftView as? UIImageView {
@@ -80,12 +78,20 @@ class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getFoodData()
         table.dataSource = self
         table.delegate = self
         initSearchController()
         setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-     
+        table.reloadData()
+    }
+    
+    func getFoodData() {
         app.login(credentials: Credentials.anonymous) { (result) in
             // Remember to dispatch back to the main thread in completion handlers
             // if you want to do anything on the UI.
@@ -103,46 +109,49 @@ class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewD
                 // Select the database
                 let database = client.database(named: "userTest")
                 // Select the collection
-                let collection = database.collection(withName: "userId")
-                let test: Document = ["DeviceModel": "iPhone12,1"]
-                let drink: Document = ["Username": "GOKAYS-PC#HBFGBR", "DeviceModel": "iPhone12,1", "_id": "898b1168124175aeb40d95e0e573e83e4d20c293"]
-                let drink2: Document = ["Username": "GOKAYbbbbbbbS-PC#HBFGBR", "DeviceModel": "iPhone12,1", "_id": "32142512421412312"]
-                let drink3: Document = ["Username": "GOKAYaaaaaaaS-PC#HBFGBR", "DeviceModel": "iPhone12,1", "_id": "tr12451241241231231252ue"]
-                collection.find(filter: test) { result in
+                let collection = database.collection(withName: "foodTable")
+            
+                collection.find(filter: Document()) { result in
                     switch result {
                     case .failure(let error):
                         print("Did not find matching documents: \(error.localizedDescription)")
                         return
                     case .success(let documents):
-                        print("Found a matching document: \(documents)")
+                        var temp = 0
                         for document in documents {
-                            print("Coffee drink: \(document)")
+                            if let arrayTest = document["enabledAmountTypes"]! {
+                                for i in 0...Int(arrayTest.arrayValue!.count - 1) {
+                                    self.testData.append(Int(arrayTest.arrayValue![i]!.int32Value!))
+                                }
+                            }
+                            if let foodName = document["FoodName"]! {
+                                self.tempData.append((String(describing: foodName.stringValue!)))
+                            }
+                            if let carbPerSession = document["CarbPerSession"]! {
+                                self.tempData.append(carbPerSession.doubleValue!)
+                            }
+                            if let carbPerGram = document["CarbPerGram"]! {
+                                self.tempData.append(carbPerGram.doubleValue!)
+                            }
+
+                            FoodsViewController.foodData.append(CellItems(foodName: self.tempData[temp] as! String, foodImage: self.tempData[temp] as! String, carbPerSession: Int(self.tempData[temp + 1] as! Double), carbPerGram: Int(self.tempData[temp + 2] as! Double), enabledAmountTypes: self.testData))
+                            self.testData = []
+                            temp += 3
                         }
-                    }
-                }
-                collection.insertOne(drink2) { result in
-                    switch result {
-                    case .failure(let error):
-                        print("Call to MongoDB failed: \(error.localizedDescription)")
-                        return
-                    case .success(let objectId):
-                        // Success returns the objectId for the inserted document
-                        print("Successfully inserted a document with id: \(objectId)")
-                    }
-                }
-                // Insert the documents into the collection
-                collection.insertMany([drink2, drink3]) { result in
-                    switch result {
-                    case .failure(let error):
-                        print("Call to MongoDB failed: \(error.localizedDescription)")
-                        return
-                    case .success(let objectIds):
-                        print("Successfully inserted \(objectIds.count) new documents.")
                     }
                 }
             }
         }
+    }
+    
+    func currentTime() -> String {
+        let date = Date()
+        let dateFormatter = DateFormatter()
         
+        dateFormatter.dateFormat = "HH:mm"
+        let currentTime = dateFormatter.string(from: date)
+
+        return currentTime
     }
     
     func setupUI() {
@@ -151,7 +160,7 @@ class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func setupNavBar() {
         let barAppearance = UINavigationBarAppearance()
-        barAppearance.backgroundColor = .systemBlue
+        barAppearance.backgroundColor = UIColor(red: 198/255.0, green: 80/255.0, blue: 90/255.0, alpha: 1.00)
         barAppearance.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.black]
         
@@ -171,7 +180,7 @@ class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewD
         if searchController.isActive {
             return filteredData.count
         } else {
-            return foodData.count
+            return FoodsViewController.foodData.count
         }
     }
     
@@ -180,13 +189,30 @@ class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewD
         if searchController.isActive {
             foodItems = filteredData[indexPath.row]
         } else {
-            foodItems = foodData[indexPath.row]
+            foodItems = FoodsViewController.foodData[indexPath.row]
         }
         
         let cell = table.dequeueReusableCell(withIdentifier: "cell",for: indexPath) as! FoodTableViewCell
-        cell.carbResult.text = foodItems.carbResult
-        cell.foodImageView.image = UIImage(named: foodItems.imageName)
+        cell.selectionStyle = .none
+        cell.carbResult.text = String(describing: foodItems.carbPerGram)
+        cell.foodImageView.image = UIImage(named: foodItems.foodImage)
         cell.foodName.text = foodItems.foodName
+        cell.tapHandler = { [weak self] in
+            
+            Store.shared.mealData.append(Store.MealItems(foodName: FoodsViewController.foodData[indexPath.row].foodName, carbCount: cell.carbResult.text ?? "", foodDateTime: self!.currentTime(), foodCount: "\(cell.foodCountTextField.text ?? "") \(cell.titleLabel.text!.lowercased())"))
+        }
+        cell.addHandler = { [weak self] in
+            let dialogMessage = UIAlertController(title: "Yemek Başarıyla Eklendi", message: "", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Tamam", style: .default, handler: { (action) -> Void in
+                print("Count button tapped")
+             })
+            dialogMessage.addAction(ok)
+            
+            self!.present(dialogMessage, animated: true, completion: nil)
+            cell.calculateCarb.backgroundColor = UIColor(red: 42/255.0, green: 88/255.0, blue: 80/255.0, alpha: 1.00)
+            cell.calculateCarb.isUserInteractionEnabled = false
+        }
+        
         return cell
     }
     
@@ -202,7 +228,7 @@ class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func filterForSearchTextAndScopeButton(searchText: String) {
-        filteredData = foodData.filter {
+        filteredData = FoodsViewController.foodData.filter {
             temp in
             let searchTextMatch = temp.foodName.lowercased().contains(searchText.lowercased())
             
