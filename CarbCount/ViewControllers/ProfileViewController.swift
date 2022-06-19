@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UITextFieldDelegate {
 
 // MARK: - Outlets
     
@@ -36,6 +36,8 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .white
         setupUI()
         setupDatePicker()
+        weightTextField.delegate = self
+        heightTextField.delegate = self
     }
     
     private func setupDatePicker() {
@@ -100,6 +102,7 @@ class ProfileViewController: UIViewController {
         }
         countButton.tintColor = .white
         countButton.backgroundColor = UIColor(red: 110/255.0, green: 184/255.0, blue: 168/255.0, alpha: 1.00)
+        countButton.layer.cornerRadius = 5
         
         infoCarbLabel.text = viewModel.infoCarbLabel
         infoCarbLabel.textColor = .gray
@@ -112,6 +115,19 @@ class ProfileViewController: UIViewController {
         infoCarbCalculateLabel.addGestureRecognizer(tabGesture2)
         
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let maxLength : Int = 3
+        
+        
+        let currentString: NSString = textField.text! as NSString
+        
+        let newString: NSString =  currentString.replacingCharacters(in: range, with: string) as NSString
+                
+        let invalidCharacters = CharacterSet(charactersIn: "0123456789").inverted
+        return string.rangeOfCharacter(from: invalidCharacters) == nil && newString.length <= maxLength
+    }
+
     
     @objc func infoCarbTapped(sender: UITapGestureRecognizer) {
         let viewController = InfoCarbViewController()

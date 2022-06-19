@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		39BDD9FD5179C2C1712E9234 /* Pods_CarbCount.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C989DCAEBE367DB8F5B8F5C /* Pods_CarbCount.framework */; };
+		DC1A358A285E1D34004FDFD9 /* FoodAppendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1A3588285E1D34004FDFD9 /* FoodAppendViewController.swift */; };
+		DC1A358B285E1D34004FDFD9 /* FoodAppendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC1A3589285E1D34004FDFD9 /* FoodAppendViewController.xib */; };
+		DC1A358D285E231D004FDFD9 /* FoodAppendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1A358C285E231D004FDFD9 /* FoodAppendViewModel.swift */; };
 		DC5D4E56282D3384001E03D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5D4E55282D3384001E03D2 /* AppDelegate.swift */; };
 		DC5D4E58282D3384001E03D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5D4E57282D3384001E03D2 /* SceneDelegate.swift */; };
 		DC5D4E5A282D3384001E03D2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5D4E59282D3384001E03D2 /* MainViewController.swift */; };
@@ -56,6 +59,9 @@
 		044630B323BC4AB33B84EEB0 /* Pods-CarbCount.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarbCount.release.xcconfig"; path = "Target Support Files/Pods-CarbCount/Pods-CarbCount.release.xcconfig"; sourceTree = "<group>"; };
 		6C989DCAEBE367DB8F5B8F5C /* Pods_CarbCount.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CarbCount.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F927153D7F0BCACFBE1E9D6 /* Pods-CarbCount.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarbCount.debug.xcconfig"; path = "Target Support Files/Pods-CarbCount/Pods-CarbCount.debug.xcconfig"; sourceTree = "<group>"; };
+		DC1A3588285E1D34004FDFD9 /* FoodAppendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodAppendViewController.swift; sourceTree = "<group>"; };
+		DC1A3589285E1D34004FDFD9 /* FoodAppendViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodAppendViewController.xib; sourceTree = "<group>"; };
+		DC1A358C285E231D004FDFD9 /* FoodAppendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodAppendViewModel.swift; sourceTree = "<group>"; };
 		DC5D4E52282D3384001E03D2 /* CarbCount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarbCount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC5D4E55282D3384001E03D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC5D4E57282D3384001E03D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -206,6 +212,8 @@
 				DC8D70C028525F5400AFB45B /* InfoCarbViewController.xib */,
 				DC8D70C5285285B500AFB45B /* CarbCalculateInfoViewController.swift */,
 				DC8D70C6285285B500AFB45B /* CarbCalculateInfoViewController.xib */,
+				DC1A3588285E1D34004FDFD9 /* FoodAppendViewController.swift */,
+				DC1A3589285E1D34004FDFD9 /* FoodAppendViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -218,6 +226,7 @@
 				DC7F54DE2845CADE005E4318 /* FoodsViewModel.swift */,
 				DC8D70C32852609600AFB45B /* InfoCarbViewModel.swift */,
 				DC8D70C92852863800AFB45B /* CarbCalculateInfoViewModel.swift */,
+				DC1A358C285E231D004FDFD9 /* FoodAppendViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -357,6 +366,7 @@
 				DC5D4E62282D3386001E03D2 /* LaunchScreen.storyboard in Resources */,
 				DC8D70C228525F5400AFB45B /* InfoCarbViewController.xib in Resources */,
 				DC8D70C8285285B500AFB45B /* CarbCalculateInfoViewController.xib in Resources */,
+				DC1A358B285E1D34004FDFD9 /* FoodAppendViewController.xib in Resources */,
 				DC5D4E5F282D3386001E03D2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -430,6 +440,7 @@
 				DCA26DD12843FBE400D94791 /* FoodTableViewCell.swift in Sources */,
 				DCA0814728364726005A4760 /* DateExtensions.swift in Sources */,
 				DCA08143283646DA005A4760 /* ProfileViewModel.swift in Sources */,
+				DC1A358A285E1D34004FDFD9 /* FoodAppendViewController.swift in Sources */,
 				DCAA5570283909120059E841 /* CircularProgressView.swift in Sources */,
 				DCAA5572283916140059E841 /* Store.swift in Sources */,
 				DC5D4E5A282D3384001E03D2 /* MainViewController.swift in Sources */,
@@ -437,6 +448,7 @@
 				DC8D70CA2852863800AFB45B /* CarbCalculateInfoViewModel.swift in Sources */,
 				DC5D4E94282D5BB3001E03D2 /* FoodsViewController.swift in Sources */,
 				DC5D4E56282D3384001E03D2 /* AppDelegate.swift in Sources */,
+				DC1A358D285E231D004FDFD9 /* FoodAppendViewModel.swift in Sources */,
 				DC8D70C42852609600AFB45B /* InfoCarbViewModel.swift in Sources */,
 				DC5D4E92282D5B60001E03D2 /* ProfileViewController.swift in Sources */,
 				DC7F54DF2845CADE005E4318 /* FoodsViewModel.swift in Sources */,

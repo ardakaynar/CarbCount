@@ -57,6 +57,7 @@ class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(foodAppendButtonTapped))
         searchController.searchBar.delegate = self
         searchController.searchBar.tintColor = .red
         searchController.searchBar.searchTextField.textColor = .white
@@ -93,8 +94,6 @@ class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func getFoodData() {
         app.login(credentials: Credentials.anonymous) { (result) in
-            // Remember to dispatch back to the main thread in completion handlers
-            // if you want to do anything on the UI.
             DispatchQueue.main.async {
                 switch result {
                 case .failure(let error):
@@ -142,6 +141,11 @@ class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewD
                 }
             }
         }
+    }
+    
+    @objc func foodAppendButtonTapped() {
+        let viewController = FoodAppendViewController()
+        present(viewController, animated: true, completion: nil)
     }
     
     func currentTime() -> String {
