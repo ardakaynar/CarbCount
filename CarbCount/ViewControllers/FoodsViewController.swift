@@ -120,17 +120,17 @@ class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewD
                         for document in documents {
                             if let arrayTest = document["enabledAmountTypes"]! {
                                 for i in 0...Int(arrayTest.arrayValue!.count - 1) {
-                                    self.testData.append(Int(arrayTest.arrayValue![i]!.int32Value!))
+                                    self.testData.append(Int(arrayTest.arrayValue![i]!.int32Value ?? 0))
                                 }
                             }
                             if let foodName = document["FoodName"]! {
                                 self.tempData.append((String(describing: foodName.stringValue!)))
                             }
                             if let carbPerSession = document["CarbPerSession"]! {
-                                self.tempData.append(carbPerSession.doubleValue!)
+                                self.tempData.append(carbPerSession.doubleValue ?? 0)
                             }
                             if let carbPerGram = document["CarbPerGram"]! {
-                                self.tempData.append(carbPerGram.doubleValue!)
+                                self.tempData.append(carbPerGram.doubleValue ?? 0)
                             }
 
                             FoodsViewController.foodData.append(CellItems(foodName: self.tempData[temp] as! String, foodImage: self.tempData[temp] as! String, carbPerSession: Int(self.tempData[temp + 1] as! Double), carbPerGram: Int(self.tempData[temp + 2] as! Double), enabledAmountTypes: self.testData))

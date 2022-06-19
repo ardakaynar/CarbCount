@@ -134,8 +134,8 @@ class FoodAppendViewController: UIViewController, UITextFieldDelegate {
                 let database = client.database(named: "userTest")
                 // Select the collection
                 let collection = database.collection(withName: "foodTable")
-                let tempString: AnyBSON = self.foodNameTextField.text
-                let food: Document = [ "FoodName": tempString as AnyBSON, "CarbPerGram": "Timbio, Colombia", "containsDairy": "false", "_partition": "Store 43"]
+
+                let food: Document = [ "FoodName": AnyBSON(stringLiteral: self.foodNameTextField.text ?? ""), "CarbPerGram": AnyBSON(integerLiteral: Int(self.perGramTextField.text ?? "")!), "CarbPerSession": "", "enabledAmountTypes": AnyBSON(arrayLiteral: 1,2)]
                 collection.insertOne(food) { result in
                     switch result {
                     case .failure(let error):
