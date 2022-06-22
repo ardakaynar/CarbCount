@@ -146,7 +146,6 @@ class FoodAppendViewController: UIViewController, UITextFieldDelegate {
                         print("Successfully inserted a document with id: \(objectId)")
                     }
                 }
-    
             }
         }
     }

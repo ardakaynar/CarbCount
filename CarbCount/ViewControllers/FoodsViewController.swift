@@ -16,7 +16,7 @@ class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewD
         let foodName: String
         let foodImage: String
         let carbPerSession: Int
-        let carbPerGram: Int
+        let carbPerGram: Double
         let enabledAmountTypes: [Int]
     }
 //
@@ -28,10 +28,10 @@ class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewD
 //    }
     
     static var foodData: [CellItems] = [
-        CellItems(foodName: "Yoğurt", foodImage: "food-yogurt", carbPerSession: 100, carbPerGram: 100, enabledAmountTypes: [0,1,3]),
-        CellItems(foodName: "Makarna", foodImage: "food-makarna", carbPerSession: 100, carbPerGram: 100, enabledAmountTypes: [1]),
-        CellItems(foodName: "Ispanak", foodImage: "food-ispanak", carbPerSession: 100, carbPerGram: 100, enabledAmountTypes: [2]),
-        CellItems(foodName: "Ayran", foodImage: "food-ayran",carbPerSession: 100, carbPerGram: 100, enabledAmountTypes: [3])
+        CellItems(foodName: "Yoğurt", foodImage: "food-yogurt", carbPerSession: 100, carbPerGram: 0.05, enabledAmountTypes: [0,1,3]),
+        CellItems(foodName: "Makarna", foodImage: "food-makarna", carbPerSession: 100, carbPerGram: 0.3, enabledAmountTypes: [1]),
+        CellItems(foodName: "Ispanak", foodImage: "food-ispanak", carbPerSession: 100, carbPerGram: 0.6, enabledAmountTypes: [2]),
+        CellItems(foodName: "Ayran", foodImage: "food-ayran",carbPerSession: 100, carbPerGram: 0.05, enabledAmountTypes: [3])
     ]
     
 //    static var mealData: [MealItems] = []
@@ -128,7 +128,7 @@ class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewD
                                 self.tempData.append(carbPerGram.doubleValue ?? 0)
                             }
 
-                            FoodsViewController.foodData.append(CellItems(foodName: self.tempData[temp] as! String, foodImage: self.tempData[temp] as! String, carbPerSession: Int(self.tempData[temp + 1] as! Double), carbPerGram: Int(self.tempData[temp + 2] as! Double), enabledAmountTypes: self.testData))
+                            FoodsViewController.foodData.append(CellItems(foodName: self.tempData[temp] as! String, foodImage: self.tempData[temp] as! String, carbPerSession: Int(self.tempData[temp + 1] as! Double), carbPerGram: Double(self.tempData[temp + 2] as! Double), enabledAmountTypes: self.testData))
                             self.testData = []
                             temp += 3
                         }

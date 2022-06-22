@@ -58,7 +58,7 @@ class FoodTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
  
     @IBAction func foodCountTextFieldDidEnd(_ sender: Any) {
-        carbResult.text = "\(Int(self.foodCountTextField.text ?? "")! * FoodsViewController.foodData[Store.shared.foodCount].carbPerGram)"
+        carbResult.text = "\(Double(self.foodCountTextField.text ?? "")! * FoodsViewController.foodData[Store.shared.foodCount].carbPerGram)"
         
     }
     
@@ -94,7 +94,7 @@ class FoodTableViewCell: UITableViewCell, UITextFieldDelegate {
             self.calculateCarb.backgroundColor = UIColor(red: 116/255.0, green: 200/255.0, blue: 63/255.0, alpha: 1.00)
             self.calculateCarb.isUserInteractionEnabled = true
             
-            self.carbResult.text = "\(Int(self.foodCountTextField.text ?? "")! * FoodsViewController.foodData[Store.shared.foodCount].carbPerGram)"
+            self.carbResult.text = "\(Double(self.foodCountTextField.text ?? "")! * FoodsViewController.foodData[Store.shared.foodCount].carbPerGram)"
         }
         titleLabel.text = "Birim"
         titleLabel.backgroundColor = UIColor(red: 198/255.0, green: 80/255.0, blue: 90/255.0, alpha: 1.00)
