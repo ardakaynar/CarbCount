@@ -17,6 +17,7 @@ class Store: NSObject {
         let carbCount: String
         let foodDateTime: String
         let foodCount: String
+        let foodImage: String
     }
     
     var mealData: [MealItems] = []

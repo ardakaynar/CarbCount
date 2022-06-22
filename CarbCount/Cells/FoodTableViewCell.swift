@@ -36,7 +36,7 @@ class FoodTableViewCell: UITableViewCell, UITextFieldDelegate {
             switch value {
             case 0:
                 dropDownValues.append("Gram")
-                defaultValues.append("5")
+                defaultValues.append("1")
             case 1:
                 dropDownValues.append("Kilogram")
                 defaultValues.append("3")

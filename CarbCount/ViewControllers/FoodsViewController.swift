@@ -28,15 +28,10 @@ class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewD
 //    }
     
     static var foodData: [CellItems] = [
-        CellItems(foodName: "Sütaş Yarım Yağlı Süt", foodImage: "sample_product", carbPerSession: 100, carbPerGram: 100, enabledAmountTypes: [0,1,3]),
-        CellItems(foodName: "Makarna", foodImage: "sample_product", carbPerSession: 100, carbPerGram: 100, enabledAmountTypes: [1]),
-        CellItems(foodName: "Ispanak", foodImage: "sample_product", carbPerSession: 100, carbPerGram: 100, enabledAmountTypes: [2]),
-        CellItems(foodName: "Ayran", foodImage: "sample_product",carbPerSession: 100, carbPerGram: 100, enabledAmountTypes: [3]),
-        CellItems(foodName: "Tavuk Dürüm", foodImage: "sample_product", carbPerSession: 100, carbPerGram: 100, enabledAmountTypes: [4]),
-        CellItems(foodName: "Makarna2", foodImage: "sample_product", carbPerSession: 100, carbPerGram: 100, enabledAmountTypes: []),
-        CellItems(foodName: "Ispanak2", foodImage: "sample_product", carbPerSession: 100, carbPerGram: 100, enabledAmountTypes: []),
-        CellItems(foodName: "Ayran2", foodImage: "sample_product", carbPerSession: 100, carbPerGram: 100, enabledAmountTypes: []),
-        CellItems(foodName: "Tavuk Dürüm2", foodImage: "sample_product", carbPerSession: 100, carbPerGram: 100, enabledAmountTypes: [])
+        CellItems(foodName: "Yoğurt", foodImage: "food-yogurt", carbPerSession: 100, carbPerGram: 100, enabledAmountTypes: [0,1,3]),
+        CellItems(foodName: "Makarna", foodImage: "food-makarna", carbPerSession: 100, carbPerGram: 100, enabledAmountTypes: [1]),
+        CellItems(foodName: "Ispanak", foodImage: "food-ispanak", carbPerSession: 100, carbPerGram: 100, enabledAmountTypes: [2]),
+        CellItems(foodName: "Ayran", foodImage: "food-ayran",carbPerSession: 100, carbPerGram: 100, enabledAmountTypes: [3])
     ]
     
 //    static var mealData: [MealItems] = []
@@ -203,16 +198,26 @@ class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.foodName.text = foodItems.foodName
         cell.tapHandler = { [weak self] in
             
-            Store.shared.mealData.append(Store.MealItems(foodName: FoodsViewController.foodData[indexPath.row].foodName, carbCount: cell.carbResult.text ?? "", foodDateTime: self!.currentTime(), foodCount: "\(cell.foodCountTextField.text ?? "") \(cell.titleLabel.text!.lowercased())"))
+            Store.shared.mealData.append(Store.MealItems(foodName: FoodsViewController.foodData[indexPath.row].foodName, carbCount: cell.carbResult.text ?? "", foodDateTime: self!.currentTime(), foodCount: "\(cell.foodCountTextField.text ?? "") \(cell.titleLabel.text!.lowercased())", foodImage: FoodsViewController.foodData[indexPath.row].foodImage))
         }
         cell.addHandler = { [weak self] in
-            let dialogMessage = UIAlertController(title: "Yemek Başarıyla Eklendi", message: "", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "Tamam", style: .default, handler: { (action) -> Void in
-                print("Count button tapped")
-             })
-            dialogMessage.addAction(ok)
+            if Store.shared.consumedCarbCount > Store.shared.dailyCarbCount {
+                let dialogMessage = UIAlertController(title: "Yemek Başarıyla Eklendi", message: "Günlük karbonhidrat miktarınızı aştınız. Lütfen dikkat ediniz.", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "Tamam", style: .default, handler: { (action) -> Void in
+                    print("Count button tapped")
+                 })
+                dialogMessage.addAction(ok)
+                self!.present(dialogMessage, animated: true, completion: nil)
+            } else {
+                let dialogMessage = UIAlertController(title: "Yemek Başarıyla Eklendi", message: "", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "Tamam", style: .default, handler: { (action) -> Void in
+                    print("Count button tapped")
+                 })
+                dialogMessage.addAction(ok)
+                
+                self!.present(dialogMessage, animated: true, completion: nil)
+            }
             
-            self!.present(dialogMessage, animated: true, completion: nil)
             cell.calculateCarb.backgroundColor = UIColor(red: 42/255.0, green: 88/255.0, blue: 80/255.0, alpha: 1.00)
             cell.calculateCarb.isUserInteractionEnabled = false
         }

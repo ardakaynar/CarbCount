@@ -33,6 +33,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cp.tag = 101
         self.circularView.addSubview(cp)
         //cp.progressLayer.strokeEnd = 0.8
+        Store.shared.consumedCarbCount = 0.0
+        remainingCarbLabel.text = "\(Int(Store.shared.consumedCarbCount)) gr / \(Int(Store.shared.dailyCarbCount)) gr"
         
     }
     
@@ -48,6 +50,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.perform(#selector(self.animateProgress), with: nil, afterDelay: 0.2)
             self.remainingCarbLabel.text = "\(Int(Store.shared.consumedCarbCount)) gr / \(Int(Store.shared.dailyCarbCount)) gr"
             self.resetConsumedCarb()
+            if Store.shared.consumedCarbCount > Store.shared.dailyCarbCount {
+                self.remainingCarbLabel.textColor = .red
+                self.carbDescriptionLabel.textColor = .red
+            }
         })
     }
     
@@ -120,6 +126,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.carbResultLabel.text =  Store.shared.mealData[index].carbCount
         cell.foodDateLabel.text =  Store.shared.mealData[index].foodDateTime
         cell.foodCountLabel.text =  Store.shared.mealData[index].foodCount
+        cell.foodImageView.image = UIImage(named: Store.shared.mealData[index].foodImage)
         return cell
     }
     

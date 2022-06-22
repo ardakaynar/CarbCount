@@ -160,13 +160,13 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     func calculateCarb() {
         let weight: Double = Double(Store.shared.weight) ?? 0
         if Store.shared.age > 15 && Store.shared.age <= 18 {
-            Store.shared.dailyCarbCount = Store.shared.isMale ? (17.6 * weight) + 656 : (13.3 * weight) + 690
+            Store.shared.dailyCarbCount = (Store.shared.isMale ? (17.6 * weight) + 656 : (13.3 * weight) + 690) / 8
         } else if Store.shared.age > 18 && Store.shared.age <= 30 {
-            Store.shared.dailyCarbCount =  Store.shared.isMale ? (18.0 * weight) + 690 : (14.8 * weight) + 485
+            Store.shared.dailyCarbCount =  (Store.shared.isMale ? (18.0 * weight) + 690 : (14.8 * weight) + 485) / 8
         } else if Store.shared.age > 30 && Store.shared.age <= 60 {
-            Store.shared.dailyCarbCount =  Store.shared.isMale ? (11.4 * weight) + 870 : (8.1 * weight) + 842
+            Store.shared.dailyCarbCount =  (Store.shared.isMale ? (11.4 * weight) + 870 : (8.1 * weight) + 842) / 8
         } else {
-            Store.shared.dailyCarbCount =  Store.shared.isMale ? (11.7 * weight) + 585 : (9.0 * weight) + 656
+            Store.shared.dailyCarbCount =  (Store.shared.isMale ? (11.7 * weight) + 585 : (9.0 * weight) + 656) / 8
         }
         
     }
