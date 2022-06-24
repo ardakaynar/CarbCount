@@ -23,12 +23,15 @@ class FoodAppendViewController: UIViewController, UITextFieldDelegate {
     
     let viewModel = FoodAppendViewModel()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         perGramTextField.delegate = self
         setupUI()
         foodImageView.isHidden = true
     }
+    
+    var imageBase64Data: String?
     
     func setupUI() {
         titleLabel.text = viewModel.titleLabelText
@@ -135,7 +138,7 @@ class FoodAppendViewController: UIViewController, UITextFieldDelegate {
                 // Select the collection
                 let collection = database.collection(withName: "foodTable")
 
-                let food: Document = [ "FoodName": AnyBSON(stringLiteral: self.foodNameTextField.text ?? ""), "CarbPerGram": AnyBSON(integerLiteral: Int(self.perGramTextField.text ?? "")!), "CarbPerSession": "", "enabledAmountTypes": AnyBSON(arrayLiteral: 1,2)]
+                let food: Document = [ "FoodName": AnyBSON(stringLiteral: self.foodNameTextField.text ?? ""), "CarbPerGram": AnyBSON(integerLiteral: Int(self.perGramTextField.text ?? "")!), "CarbPerSession": AnyBSON(integerLiteral: Int(self.perGramTextField.text ?? "")! * 100), "FoodImageEncrypted": AnyBSON(stringLiteral: self.imageBase64Data!), "enabledAmountTypes": AnyBSON(arrayLiteral: 0,1)]
                 collection.insertOne(food) { result in
                     switch result {
                     case .failure(let error):
@@ -144,12 +147,23 @@ class FoodAppendViewController: UIViewController, UITextFieldDelegate {
                     case .success(let objectId):
                         // Success returns the objectId for the inserted document
                         print("Successfully inserted a document with id: \(objectId)")
+                        DispatchQueue.main.async {[weak self] in
+                            guard let weakSelf = self else {return}
+                            
+                            let alert = UIAlertController(title: "Başarılı", message: "Ürününüz başarıyla eklendi.", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "Tamam", style: .default, handler: { action in
+                                weakSelf.dismiss(animated: true, completion: nil)
+                            }))
+                            weakSelf.present(alert, animated: true, completion: nil)
+                        }
                     }
                 }
             }
         }
     }
-    
+    func convertImageToBase64String (img: UIImage) -> String {
+        return img.jpegData(compressionQuality: 1)?.base64EncodedString() ?? ""
+    }
 }
 
 extension FoodAppendViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -157,6 +171,8 @@ extension FoodAppendViewController: UIImagePickerControllerDelegate, UINavigatio
         foodImageView.isHidden = false
         if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
             foodImageView.image = image
+            self.imageBase64Data = convertImageToBase64String(img: image)
+            
         }
         picker.dismiss(animated: true, completion: nil)
         

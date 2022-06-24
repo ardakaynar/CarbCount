@@ -98,6 +98,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationController?.navigationBar.isTranslucent = false
     }
     
+    func convertBase64StringToImage (imageBase64String:String) -> UIImage {
+        let imageData = Data(base64Encoded: imageBase64String)
+        let image = UIImage(data: imageData!)
+        return image!
+    }
+    
     func resetConsumedCarb() {
         let resetTime = "235959"
         let date = Date()
@@ -126,7 +132,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.carbResultLabel.text =  Store.shared.mealData[index].carbCount
         cell.foodDateLabel.text =  Store.shared.mealData[index].foodDateTime
         cell.foodCountLabel.text =  Store.shared.mealData[index].foodCount
-        cell.foodImageView.image = UIImage(named: Store.shared.mealData[index].foodImage)
+        cell.foodImageView.image = convertBase64StringToImage(imageBase64String: Store.shared.mealData[index].foodImage)
         return cell
     }
     

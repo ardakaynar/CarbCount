@@ -9,6 +9,11 @@ import Foundation
 
 class FoodsViewModel {
     
+    let indexPath: Int?
+    init(indexPath: Int) {
+        self.indexPath = indexPath
+    }
+    
     var textFieldPlaceHolder: String {
         "Miktar"
     }

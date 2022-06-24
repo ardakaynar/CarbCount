@@ -15,7 +15,7 @@ class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewD
     struct CellItems {
         let foodName: String
         let foodImage: String
-        let carbPerSession: Int
+        let carbPerSession: Double
         let carbPerGram: Double
         let enabledAmountTypes: [Int]
     }
@@ -28,10 +28,10 @@ class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewD
 //    }
     
     static var foodData: [CellItems] = [
-        CellItems(foodName: "Yoğurt", foodImage: "food-yogurt", carbPerSession: 100, carbPerGram: 0.05, enabledAmountTypes: [0,1,3]),
-        CellItems(foodName: "Makarna", foodImage: "food-makarna", carbPerSession: 100, carbPerGram: 0.3, enabledAmountTypes: [1]),
-        CellItems(foodName: "Ispanak", foodImage: "food-ispanak", carbPerSession: 100, carbPerGram: 0.6, enabledAmountTypes: [2]),
-        CellItems(foodName: "Ayran", foodImage: "food-ayran",carbPerSession: 100, carbPerGram: 0.05, enabledAmountTypes: [3])
+//        CellItems(foodName: "Yoğurt", foodImage: "food-yogurt", carbPerSession: 100, carbPerGram: 0.05, enabledAmountTypes: [0,1,3]),
+//        CellItems(foodName: "Makarna", foodImage: "food-makarna", carbPerSession: 100, carbPerGram: 0.3, enabledAmountTypes: [1]),
+//        CellItems(foodName: "Ispanak", foodImage: "food-ispanak", carbPerSession: 100, carbPerGram: 0.6, enabledAmountTypes: [2]),
+//        CellItems(foodName: "Ayran", foodImage: "food-ayran",carbPerSession: 100, carbPerGram: 0.05, enabledAmountTypes: [3])
     ]
     
 //    static var mealData: [MealItems] = []
@@ -121,21 +121,31 @@ class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewD
                             if let foodName = document["FoodName"]! {
                                 self.tempData.append((String(describing: foodName.stringValue!)))
                             }
+                            if let imageName = document["FoodImageEncrypted"]! {
+                                self.tempData.append((String(describing: imageName.stringValue!)))
+                            }
                             if let carbPerSession = document["CarbPerSession"]! {
                                 self.tempData.append(carbPerSession.doubleValue ?? 0)
                             }
                             if let carbPerGram = document["CarbPerGram"]! {
                                 self.tempData.append(carbPerGram.doubleValue ?? 0)
                             }
+                           
 
-                            FoodsViewController.foodData.append(CellItems(foodName: self.tempData[temp] as! String, foodImage: self.tempData[temp] as! String, carbPerSession: Int(self.tempData[temp + 1] as! Double), carbPerGram: Double(self.tempData[temp + 2] as! Double), enabledAmountTypes: self.testData))
+                            FoodsViewController.foodData.append(CellItems(foodName: self.tempData[temp] as! String, foodImage: self.tempData[temp + 1] as! String, carbPerSession: Double(self.tempData[temp + 2] as! Double), carbPerGram: Double(self.tempData[temp + 3] as! Double), enabledAmountTypes: self.testData))
                             self.testData = []
-                            temp += 3
+                            temp += 4
                         }
                     }
                 }
             }
         }
+    }
+    
+    func convertBase64StringToImage (imageBase64String:String) -> UIImage {
+        let imageData = Data(base64Encoded: imageBase64String)
+        let image = UIImage(data: imageData!)
+        return image!
     }
     
     @objc func foodAppendButtonTapped() {
@@ -194,10 +204,10 @@ class FoodsViewController: UIViewController, UITableViewDataSource, UITableViewD
         let cell = table.dequeueReusableCell(withIdentifier: "cell",for: indexPath) as! FoodTableViewCell
         cell.selectionStyle = .none
         cell.carbResult.text = String(describing: foodItems.carbPerGram)
-        cell.foodImageView.image = UIImage(named: foodItems.foodImage)
+        cell.foodImageView.image = convertBase64StringToImage(imageBase64String: foodItems.foodImage)
         cell.foodName.text = foodItems.foodName
+        cell.viewModel = FoodsViewModel(indexPath: indexPath.row)
         cell.tapHandler = { [weak self] in
-            
             Store.shared.mealData.append(Store.MealItems(foodName: FoodsViewController.foodData[indexPath.row].foodName, carbCount: cell.carbResult.text ?? "", foodDateTime: self!.currentTime(), foodCount: "\(cell.foodCountTextField.text ?? "") \(cell.titleLabel.text!.lowercased())", foodImage: FoodsViewController.foodData[indexPath.row].foodImage))
         }
         cell.addHandler = { [weak self] in

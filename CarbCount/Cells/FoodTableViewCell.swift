@@ -20,45 +20,83 @@ class FoodTableViewCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var calculateCarb: UIButton!
     var tapHandler: (() -> ())?
     var addHandler: (() -> ())?
-
+    var indexHandler: ((Int) -> (Int))?
     
-    let viewModel = FoodsViewModel()
+    var viewModel: FoodsViewModel? {
+             didSet {
+                 configure()
+             }
+         }
+   
     var temp: Int = 100
     let dropDown = DropDown()
     var dropDownValues: [String] = []
     var defaultValues: [String] = []
+    var perGramValue: Double = 0.0
+    var perSessionValue: Double = 0.0
+    var indexPath: Int = 0
+    var isPerGram: Bool = true
+    var enabledAmountTypes: [Int] = []
+    func configure() {
+        guard let viewModel = viewModel else { return }
+        self.perGramValue = FoodsViewController.foodData[viewModel.indexPath!].carbPerGram
+        self.perSessionValue = FoodsViewController.foodData[viewModel.indexPath!].carbPerSession
+        self.enabledAmountTypes = FoodsViewController.foodData[viewModel.indexPath!].enabledAmountTypes
+        self.indexPath = viewModel.indexPath!
+        carbResult.text = String(Float(perGramValue))
+       
+        calculateCarb.tintColor = .white
+        calculateCarb.backgroundColor = UIColor(red: 42/255.0, green: 88/255.0, blue: 80/255.0, alpha: 1.00)
+        calculateCarb.isUserInteractionEnabled = false
+        calculateCarb.layer.cornerRadius = 10
+        foodCountTextField.placeholder = viewModel.textFieldPlaceHolder
+        setDropdownValues()
+        dropDownSetup()
+    }
 
-    
     func setDropdownValues() {
         dropDownValues.removeAll()
        
-        for value in FoodsViewController.foodData[Store.shared.foodCount].enabledAmountTypes {
+        for value in enabledAmountTypes {
             switch value {
             case 0:
                 dropDownValues.append("Gram")
-                defaultValues.append("1")
+                defaultValues.append("100")
+                isPerGram = true
             case 1:
                 dropDownValues.append("Kilogram")
-                defaultValues.append("3")
+                defaultValues.append("1")
+                isPerGram = true
             case 2:
                 dropDownValues.append("Mililitre")
                 defaultValues.append("100")
+                isPerGram = true
             case 3:
+                dropDownValues.append("Litre")
+                defaultValues.append("1")
+                isPerGram = true
+            case 4:
                 dropDownValues.append("Porsiyon")
                 defaultValues.append("1")
-            case 4:
+                isPerGram = false
+            case 5:
                 dropDownValues.append("Adet")
                 defaultValues.append("1")
-            default:
+                isPerGram = false
+            case 6:
                 dropDownValues.append("Bardak")
                 defaultValues.append("1")
+                isPerGram = false
+            default:
+                dropDownValues.append("Gram")
+                defaultValues.append("1")
+                isPerGram = true
             }
         }
-        Store.shared.foodCount += 1
     }
  
     @IBAction func foodCountTextFieldDidEnd(_ sender: Any) {
-        carbResult.text = "\(Double(self.foodCountTextField.text ?? "")! * FoodsViewController.foodData[Store.shared.foodCount].carbPerGram)"
+        carbResult.text = "\(Float(Double(self.foodCountTextField.text ?? "")! * self.perGramValue))"
         
     }
     
@@ -76,14 +114,12 @@ class FoodTableViewCell: UITableViewCell, UITextFieldDelegate {
         super.awakeFromNib()
         
         foodCountTextField.delegate = self
-        
-        dropDownSetup()
-        setupUI()
+    
+       
+      
     }
     
     func dropDownSetup() {
-        setDropdownValues()
-        Store.shared.foodCount = 0
         dropDown.anchorView = vwDropDown
         dropDown.dataSource = dropDownValues
         dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
@@ -94,7 +130,7 @@ class FoodTableViewCell: UITableViewCell, UITextFieldDelegate {
             self.calculateCarb.backgroundColor = UIColor(red: 116/255.0, green: 200/255.0, blue: 63/255.0, alpha: 1.00)
             self.calculateCarb.isUserInteractionEnabled = true
             
-            self.carbResult.text = "\(Double(self.foodCountTextField.text ?? "")! * FoodsViewController.foodData[Store.shared.foodCount].carbPerGram)"
+            self.carbResult.text = isPerGram ? "\(Float(Double(self.foodCountTextField.text ?? "")! * self.perGramValue))" : "\(Float(Double(self.foodCountTextField.text ?? "")! * self.perSessionValue))"
         }
         titleLabel.text = "Birim"
         titleLabel.backgroundColor = UIColor(red: 198/255.0, green: 80/255.0, blue: 90/255.0, alpha: 1.00)
@@ -104,13 +140,5 @@ class FoodTableViewCell: UITableViewCell, UITextFieldDelegate {
         vwDropDown.layer.cornerRadius = 10
     }
     
-    func setupUI() {
-        carbResult.text = String(FoodsViewController.foodData[Store.shared.foodCount].carbPerGram)
-       
-        calculateCarb.tintColor = .white
-        calculateCarb.backgroundColor = UIColor(red: 42/255.0, green: 88/255.0, blue: 80/255.0, alpha: 1.00)
-        calculateCarb.isUserInteractionEnabled = false
-        calculateCarb.layer.cornerRadius = 10
-        foodCountTextField.placeholder = viewModel.textFieldPlaceHolder
-    }
+    
 }
